@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.127.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Các hoạt động :: LÀM VIỆC VỚI AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
+
+    
+    <link href="/css/nucleus.css?1725803905" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725803905" rel="stylesheet">
+    <link href="/css/hybrid.css?1725803905" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725803905" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725803905" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725803905" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725803905" rel="stylesheet">
+    <link href="/css/theme.css?1725803905" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725803905" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1725803905" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1725803905"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/7-operations/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1725803905"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725803905"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/lingling1101.github.io\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1725803905"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-getting-started/" title="Bắt đầu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-getting-started/">
+           <b> 1. </b> Bắt đầu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-table-design-and-load/" title="Thiết kế bảng và tải dữ liệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-table-design-and-load/">
+           <b> 2. </b> Thiết kế bảng và tải dữ liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-ongoing-load---elt/" title="Tải dữ liệu liên tục - ELT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-ongoing-load---elt/">
+           <b> 3. </b> Tải dữ liệu liên tục - ELT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-data-sharing/" title="Chia sẻ dữ liệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-data-sharing/">
+           <b> 4. </b> Chia sẻ dữ liệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-machine-learning---redshift-ml/" title="Học máy - Redshift ML" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-machine-learning---redshift-ml/">
+           <b> 5. </b> Học máy - Redshift ML
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/6-query-data-lake---redshift-spectrum/" title="Truy vấn Data Lake - Redshift Spectrum" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/6-query-data-lake---redshift-spectrum/">
+          <b>6. </b>Truy vấn Data Lake - Redshift Spectrum
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/7-operations/" title="Các hoạt động" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/7-operations/">
+          <b>7. </b>Các hoạt động
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/8-clean/" title="Xóa các tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/8-clean/">
+          <b>8. </b>Xóa các tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://lingling1101.github.io/7-operations/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://lingling1101.github.io/vi/7-operations/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>31-08-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://drive.google.com/drive/folders/1-JDjxDuFFq9Xwszz7REZ_kDzWDPtM1XS?usp=sharing"  style="color:orange">Nguyễn Thị Thùy Linh  </a> <br>
+                
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Redshift Immersion Labs</a> > Các hoạt động
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Các hoạt động
+            </h1>
+          
+
+        
+
+
+
+	<p><strong>7. Các hoạt động</strong></p>
+<p>Trong bài thực hành này, bạn sẽ thực hiện việc giám sát (từ cả bảng điều khiển và các chế độ xem hệ thống), tính năng ghi nhật ký kiểm toán, thay đổi cài đặt và giới hạn RPU cơ bản.</p>
+<p><strong>Nội dung</strong></p>
+<ul>
+<li>Trước khi bắt đầu</li>
+<li>Giám sát</li>
+<li>Chế độ xem hệ thống</li>
+<li>Ghi nhật ký kiểm toán</li>
+<li>Thay đổi RPU và đặt giới hạn</li>
+</ul>
+<p><strong>7.1 Trước khi bắt đầu</strong></p>
+<p>Bài thực hành này giả định rằng bạn đã khởi tạo một điểm cuối <strong>Amazon Redshift Serverless</strong>. Nếu bạn chưa thực hiện, vui lòng xem phần  <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Bắt Đầu</a> và làm theo hướng dẫn ở đó. Chúng tôi sẽ sử dụng <strong>Amazon Redshift <a href="https://console.aws.amazon.com/sqlworkbench/home">QueryEditorV2</a></strong> và bảng điều khiển <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-dashboard"><strong>Amazon Redshift Serverless</strong></a> cho bài thực hành này.</p>
+<p><strong>7.2 Giám sát</strong></p>
+<p>Trong phần này, bạn sẽ trải nghiệm các tùy chọn giám sát khác nhau và thiết lập bộ lọc để trải nghiệm chức năng. Bạn sẽ sử dụng bảng điều khiển để xem lịch sử truy vấn, hiệu suất cơ sở dữ liệu và việc sử dụng tài nguyên.</p>
+<p>Khi bạn đã vào bảng điều khiển <strong>Redshift Serverless</strong>, điều hướng đến phần <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-query-and-database-monitoring"><strong>Query and database monitoring</strong></a> (Giám sát truy vấn và cơ sở dữ liệu) ở menu bên trái.</p>
+<ul>
+<li>Chọn nhóm công việc <strong>workgroup-xxxxxxx</strong></li>
+<li>Mở rộng <strong>Additional filtering options</strong> (Tùy chọn lọc bổ sung). Bạn có thể lọc các chỉ số này theo nhiều danh mục khác nhau. Cảm thấy tự do thay đổi các giá trị này dựa trên các mẫu khối lượng công việc mà bạn quan tâm nhất. Đối với bài thực hành này, hãy đặt các giá trị như trong ảnh chụp màn hình - đây là các giá trị mặc định để bắt đầu.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-1.png"></p>
+<p>Bạn sẽ không thể nhìn thấy các truy vấn. Bạn cần cấp quyền truy cập giám sát cho vai trò bảng điều khiển của mình. Đây là bước tiên quyết.</p>
+<p>Đăng nhập với tư cách siêu người dùng (awsuser) trong Trình soạn thảo truy vấn và chạy bên dưới SQL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Run</span> <span style="color:#a6e22e">below</span> <span style="color:#a6e22e">command</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">running</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">event</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">workshop</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grant</span> <span style="color:#a6e22e">role</span> <span style="color:#a6e22e">sys</span><span style="color:#f92672">:</span><span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">to</span> <span style="color:#e6db74">&#34;IAMR:WSParticipantRole&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Run</span> <span style="color:#a6e22e">below</span> <span style="color:#a6e22e">command</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">running</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">event</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">Event</span> <span style="color:#a6e22e">Engine</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grant</span> <span style="color:#a6e22e">role</span> <span style="color:#a6e22e">sys</span><span style="color:#f92672">:</span><span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">to</span> <span style="color:#e6db74">&#34;IAMR:TeamRole&#34;</span> 
+</span></span></code></pre></div><ul>
+<li>Bây giờ hãy quay lại phần <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-query-and-database-monitoring"><strong>Query and database monitoring</strong></a> (Giám sát truy vấn và cơ sở dữ liệu) ở menu bên trái và thay đổi một số bộ lọc để bắt đầu xem các truy vấn.</li>
+<li>Cuộn xuống dưới, bạn có thể thấy thời gian chạy truy vấn của bạn trong khoảng thời gian đã chọn. Sử dụng biểu đồ này để xem xét độ đồng thời của các truy vấn cũng như nghiên cứu thêm về những truy vấn mất nhiều thời gian để thực thi hơn mong đợi.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-0002.png"></p>
+<ul>
+<li>Cuộn lại bên dưới để xem biểu đồ Truy vấn và tải. Tại đây bạn có thể thấy tất cả các truy vấn đã hoàn thành, đang chạy và bị hủy bỏ.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-03.png"></p>
+<p>Đi đến tab <strong>Database Performance</strong> (Hiệu suất cơ sở dữ liệu) để xem:</p>
+<ul>
+<li><strong>Queries completed per second</strong> (Số truy vấn hoàn thành mỗi giây): Số lượng truy vấn trung bình hoàn thành mỗi giây.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-04.png"></p>
+<ul>
+<li><strong>Queries duration</strong> (Thời gian truy vấn): Thời gian trung bình để hoàn thành một truy vấn.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-05.png"></p>
+<ul>
+<li><strong>Database connections</strong> (Kết nối cơ sở dữ liệu): Số lượng kết nối cơ sở dữ liệu hoạt động trung bình.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-06.png"></p>
+<ul>
+<li><strong>Running and Queued queries</strong> (Truy vấn đang chạy và đang xếp hàng)</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-07.png"></p>
+<p>Đi đến phần <strong>Resource Monitoring</strong> (Giám sát tài nguyên) trên thanh điều hướng bên trái.</p>
+<ul>
+<li>Chọn <strong>default workgroup</strong> (nhóm công việc mặc định)</li>
+<li>Mở rộng <strong>Additional filtering options</strong> (Tùy chọn lọc bổ sung). Chọn khoảng thời gian <strong>1 phút</strong> và xem xét kết quả. Bạn cũng có thể thử các khoảng thời gian khác để xem kết quả.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-8.png"></p>
+<ul>
+<li><strong>RPU Capacity Used</strong> (Công suất RPU đã sử dụng) - Số lượng RPUs đã tiêu thụ.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-09.png"></p>
+<ul>
+<li><strong>Compute usage</strong> (Sử dụng tính toán) - Số giây RPU.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-010.png"></p>
+<p><strong>7.3 Chế độ xem hệ thống</strong></p>
+<p>Dưới đây là các chế độ xem hệ thống trong <strong>Amazon Redshift Serverless</strong> được sử dụng để giám sát truy vấn và sử dụng khối lượng công việc. Các chế độ xem này nằm trong lược đồ <strong>pg_catalog</strong>. Các chế độ xem hệ thống này đã được thiết kế để cung cấp thông tin cần thiết để giám sát Amazon Redshift Serverless, đơn giản hơn nhiều so với các chế độ xem hệ thống khác có sẵn cho các cluster đã cấp phát.</p>
+<ul>
+<li>SYS_QUERY_HISTORY</li>
+<li>SYS_QUERY_DETAIL</li>
+<li>SYS_EXTERNAL_QUERY_DETAIL</li>
+<li>SYS_LOAD_HISTORY</li>
+<li>SYS_LOAD_ERROR_DETAIL</li>
+<li>SYS_UNLOAD_HISTORY</li>
+<li>SYS_SERVERLESS_USAGE</li>
+</ul>
+<p>Vui lòng tham khảo các bổ sung mới tại <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-monitoring.html">https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-monitoring.html</a></p>
+<p>Chúng ta sẽ đi qua một số truy vấn giám sát hệ thống thường dùng.</p>
+<ul>
+<li>Chạy truy vấn dưới đây để tìm 10 truy vấn gần đây đã hoàn thành, đang chạy và đang xếp hàng.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">user_id</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">query_id</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">transaction_id</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">session_id</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">status</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">trim</span>(<span style="color:#a6e22e">database_name</span>) <span style="color:#a6e22e">AS</span> <span style="color:#a6e22e">database_name</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">start_time</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">end_time</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">result_cache_hit</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">elapsed_time</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">queue_time</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">execution_time</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">sys_query_history</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">status</span> <span style="color:#a6e22e">IN</span> (<span style="color:#e6db74">&#39;success&#39;</span>,<span style="color:#e6db74">&#39;running&#39;</span>,<span style="color:#e6db74">&#39;queued&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">start_time</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">LIMIT</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-11.png"></p>
+<ul>
+<li>Chạy truy vấn dưới đây để hiển thị tóm tắt việc sử dụng serverless, bao gồm lượng tài nguyên tính toán được sử dụng để xử lý các truy vấn và lượng <strong>Amazon Redshift managed storage</strong> được sử dụng</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">start_time</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">end_time</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">compute_seconds</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">compute_capacity</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">data_storage</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">sys_serverless_usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">start_time</span> <span style="color:#a6e22e">desc</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-012.png"></p>
+<p>Trong kết quả, bạn có thể thấy các khoảng thời gian không hoạt động khi cluster tự động dừng và tự động khôi phục khi các truy vấn bắt đầu xuất hiện. Bạn sẽ không bị tính phí khi cluster đang ở trạng thái dừng.</p>
+<p>Truy vấn để hiển thị số lượng hàng đã tải, số byte, số bảng và nguồn dữ liệu của các lệnh COPY</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">query_id</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">table_name</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">data_source</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">loaded_rows</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">loaded_bytes</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">sys_load_history</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">query_id</span> <span style="color:#a6e22e">DESC</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-13.png"></p>
+<p><strong>7.4 Ghi nhật ký kiểm toán</strong></p>
+<p>Bạn có thể cấu hình Amazon Redshift Serverless để xuất dữ liệu kết nối, người dùng và hoạt động của người dùng vào một nhóm nhật ký trong Amazon CloudWatch Logs khi tạo các nhóm công việc.</p>
+<p>Bước đầu tiên trong quy trình là đảm bảo rằng ghi nhật ký kiểm toán đã được bật cho nhóm công việc.</p>
+<ul>
+<li>Đi đến <strong>Namespace</strong> → <strong>security and encryption</strong>. Xác minh rằng ghi nhật ký kiểm toán đã được bật.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-014.png"></p>
+<p><img alt="image.png" src="/images/7/7-15.png"></p>
+<ul>
+<li>Chọn tùy chọn <strong>Edit</strong> nếu ghi nhật ký kiểm toán bị tắt và đánh dấu tất cả 3 tùy chọn như hình dưới đây.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-16.png"></p>
+<ul>
+<li>Bây giờ hãy chạy các lệnh sau trong <strong>query editor</strong> kết nối đến nhóm công việc mặc định của serverless.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">orders_new</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_CUSTKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERSTATUS</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_TOTALPRICE</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERDATE</span> Date,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERPRIORITY</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_CLERK</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_SHIPPRIORITY</span> <span style="color:#a6e22e">Integer</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">79</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">distkey</span> (<span style="color:#a6e22e">O_ORDERKEY</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sortkey</span> (<span style="color:#a6e22e">O_ORDERDATE</span>);
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-017.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">orders_new</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/orders/orders.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">orders_new</span> <span style="color:#a6e22e">limit</span> <span style="color:#ae81ff">100</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-18.png"></p>
+<p><img alt="image.png" src="/images/7/7-19.png"></p>
+<p>Bạn có thể giám sát các sự kiện trong Amazon CloudWatch Logs.</p>
+<ul>
+<li>Đi đến dịch vụ <strong>Amazon CloudWatch</strong> và chọn <strong>Metrics</strong> → <strong>All metrics</strong> trên menu điều hướng bên trái.</li>
+<li>Chọn <strong>AWS/Redshift-Serverless</strong> để lấy chi tiết về việc sử dụng Serverless.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-020.png"></p>
+<p>Các chỉ số Amazon Redshift Serverless được chia thành các nhóm chỉ số tính toán, dữ liệu và lưu trữ. Chọn <strong>Workgroup</strong>* để lấy chi tiết về số giây tính toán.</p>
+<p><img alt="image.png" src="/images/7/7-21.png"></p>
+<p>Chọn nhóm công việc của bạn để lấy chi tiết về tài nguyên tính toán cho nhóm công việc cụ thể.</p>
+<p><img alt="image.png" src="/images/7/7-022.png"></p>
+<p>Chọn <strong>DatabaseName</strong>, <strong>Namespace</strong> để lấy chi tiết về tài nguyên lưu trữ cho một namespace.</p>
+<p><img alt="image.png" src="/images/7/7-023.png"></p>
+<p>Chọn cơ sở dữ liệu <strong>Dev</strong> cho namespace của bạn để tìm tổng số bảng như hình dưới đây.</p>
+<p><img alt="image.png" src="/images/7/7-0024.png"></p>
+<p>Bạn cũng có thể xuất các sự kiện nhóm nhật ký CloudWatch sang S3.</p>
+<p><strong>LƯU Ý</strong>: Bạn có thể không truy cập được điều này trong môi trường thực hành. Nhưng bạn có thể thử trong môi trường của riêng bạn.</p>
+<p><img alt="image.png" src="/images/7/7-025.png"></p>
+<p><strong>7.5 Thay đổi RPUs và đặt giới hạn</strong></p>
+<ul>
+<li>Chọn default workgroup của bạn, nhấp vào tab <strong>Limits</strong> (Giới hạn).</li>
+<li>Nhấp vào <strong>Edit</strong> (Chỉnh sửa) trong phần <strong>Base capacity in Redshift processing units (RPUs)</strong> (Công suất cơ bản bằng đơn vị xử lý Redshift - RPU).</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-26.png"></p>
+<p>Mặc định, khi bạn khởi tạo điểm cuối serverless, bạn sẽ được cấp 128 RPUs. Ở đây, bạn có thể điều chỉnh cài đặt <strong>Base capacity</strong> (Công suất cơ bản) từ 32 RPUs đến 512 RPUs theo các đơn vị gia tăng 8 RPUs. Mỗi RPU là một đơn vị tài nguyên tính toán với 16 GB bộ nhớ.</p>
+<p>Đối với bài thực hành này, bạn có thể giữ nguyên ở 128 RPUs. Chọn <strong>Cancel</strong> (Hủy).</p>
+<ul>
+<li>Cuộn xuống <strong>Usage limits</strong> (Giới hạn sử dụng) và nhấp vào <strong>Manage usage limits</strong> (Quản lý giới hạn sử dụng).</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-27.png"></p>
+<ul>
+<li>Nhấp vào <strong>Add limit</strong> (Thêm giới hạn).</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-28.png"></p>
+<p>Trong tab này, bạn có thể cấu hình giới hạn công suất sử dụng để kiểm soát hóa đơn Redshift Serverless của bạn. Để kiểm soát việc sử dụng, hãy đặt số giờ RPU tối đa theo tần suất.</p>
+<ul>
+<li>Đặt <strong>Frequency</strong> (Tần suất) thành <strong>Daily</strong> (Hàng ngày), <strong>Usage limit (hours)</strong> (Giới hạn sử dụng (giờ)) thành <strong>1</strong>, và <strong>Action</strong> (Hành động) thành <strong>Turn off user queries</strong> (Tắt truy vấn của người dùng).</li>
+</ul>
+<p>(Có thể) Bạn có thể đặt cảnh báo qua email bằng cách chọn <strong>Create SNS topic</strong> (Tạo chủ đề SNS) để nhận thông báo khi đạt đến giới hạn sử dụng.</p>
+<ul>
+<li>Sau khi hoàn tất, nhấp vào <strong>Save changes</strong> (Lưu thay đổi). Sau 1 giờ RPU sử dụng hàng ngày, người dùng của bạn sẽ không còn gửi truy vấn đến Redshift Serverless và sẽ dừng việc tính phí RPU.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-29.png"></p>
+<ul>
+<li>Chạy truy vấn mẫu dưới đây vài lần. Sau vài lần, bạn sẽ nhận được thông báo lỗi giới hạn sử dụng.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">n_name</span>, <span style="color:#a6e22e">s_name</span>, <span style="color:#a6e22e">l_shipmode</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">SUM</span>(<span style="color:#a6e22e">L_QUANTITY</span>) <span style="color:#a6e22e">Total_Qty</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">lineitem</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#a6e22e">supplier</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">l_suppkey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s_suppkey</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#a6e22e">nation</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">s_nationkey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">n_nationkey</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">where</span> <span style="color:#a6e22e">datepart</span>(<span style="color:#a6e22e">year</span>, <span style="color:#a6e22e">L_SHIPDATE</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1997</span>  
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">by</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">order</span> <span style="color:#a6e22e">by</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">desc</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-30.png"></p>
+<blockquote>
+<p><strong>Mẹo:</strong> Bạn có thể thử xóa điều kiện &ldquo;where&rdquo; để tránh lấy kết quả từ bộ nhớ đệm.</p>
+</blockquote>
+<ul>
+<li>Bạn sẽ nhận được lỗi: <code>ERROR: Query reached usage limit*</code> khi đạt đến giới hạn và một thông báo qua email sẽ được gửi nếu bạn đã đăng ký qua chủ đề SNS.</li>
+</ul>
+<p><img alt="image.png" src="/images/7/7-31.png"></p>
+<ul>
+<li>Quay lại <strong>Manage usage limits</strong> (Quản lý giới hạn sử dụng) và xóa giới hạn trước khi tiếp tục bài thực hành tiếp theo. Nếu bạn bỏ qua bước này, bạn sẽ không thể thực hiện thêm các truy vấn.</li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/6-query-data-lake---redshift-spectrum/" title="Truy vấn Data Lake - Redshift Spectrum"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/8-clean/" title="Xóa các tài nguyên" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1725803906"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725803906"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725803906"></script>
+    <script src="/js/jquery.sticky.js?1725803906"></script>
+    <script src="/js/featherlight.min.js?1725803906"></script>
+    <script src="/js/highlight.pack.js?1725803906"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725803906"></script>
+    <script src="/js/learn.js?1725803906"></script>
+    <script src="/js/hugo-learn.js?1725803906"></script>
+
+    <link href="/mermaid/mermaid.css?1725803906" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725803906"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

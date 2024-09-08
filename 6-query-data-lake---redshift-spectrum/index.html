@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.127.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Query Data Lake - Redshift Spectrum :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
+
+    
+    <link href="/css/nucleus.css?1725803905" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725803905" rel="stylesheet">
+    <link href="/css/hybrid.css?1725803905" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725803905" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725803905" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725803905" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725803905" rel="stylesheet">
+    <link href="/css/theme.css?1725803905" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725803905" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1725803905" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1725803905"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/6-query-data-lake---redshift-spectrum/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1725803905"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725803905"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/lingling1101.github.io\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1725803905"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-getting-started/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-getting-started/">
+           <b> 1. </b> Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-table-design-and-load/" title="Table Design and Load" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-table-design-and-load/">
+           <b> 2. </b> Table Design and Load
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ongoing-load---elt/" title="Ongoing Load - ELT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ongoing-load---elt/">
+           <b> 3. </b> Ongoing Load - ELT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-data-sharing/" title="Data Sharing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-data-sharing/">
+           <b> 4. </b> Data Sharing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-machine-learning---redshift-ml/" title="Machine Learning - Redshift ML" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-machine-learning---redshift-ml/">
+           <b> 5. </b> Machine Learning - Redshift ML
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-query-data-lake---redshift-spectrum/" title="Query Data Lake - Redshift Spectrum" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/6-query-data-lake---redshift-spectrum/">
+           <b> 6. </b> Query Data Lake - Redshift Spectrum
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-operations/" title="Operations" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-operations/">
+           <b> 7. </b> Operations
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-clean/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-clean/">
+           <b> 8. </b> Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://aws.amazon.com/blogs"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://lingling1101.github.io/6-query-data-lake---redshift-spectrum/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://lingling1101.github.io/vi/6-query-data-lake---redshift-spectrum/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>31-08-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://drive.google.com/drive/folders/1-JDjxDuFFq9Xwszz7REZ_kDzWDPtM1XS?usp=sharing"  style="color:orange">Nguyễn Thị Thùy Linh  </a> <br>
+                
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>Redshift Immersion Labs</a> > Query Data Lake - Redshift Spectrum
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Query Data Lake - Redshift Spectrum
+            </h1>
+          
+
+        
+
+
+
+	<p><strong>6. Query Data Lake - Redshift Spectrum</strong></p>
+<p>In this lab, we show you how to query data in your Amazon S3 data lake with Amazon Redshift without loading or moving data. We will also demonstrate how you can leverage views which union data in Redshift Managed storage with data in S3. You can query structured and semi-structured data from files in Amazon S3 without having to copy or move data into Amazon Redshift tables. For latest guide on the file types that can be queried with Redshift Spectrum, please refer to supported data formats.</p>
+<p><img alt="image.png" src="/images/6/6-001.png"></p>
+<p><strong>Contents</strong></p>
+<ul>
+<li>Before you begin</li>
+<li>Use-case description</li>
+<li>Instructions</li>
+<li>Before you leave</li>
+</ul>
+<p><strong>6.1 Before you begin</strong></p>
+<p>This lab assumes you have launched a Redshift Serverless Warehouse. If you have not created Redshift Serverless warehouse see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Getting Started</a>. We will use the Redshift Query Editor V2 in the Redshift console for this lab.</p>
+<p>Please find your region by following the image below and select s3 data sets as per the instructions for your region.</p>
+<blockquote>
+<p>This lab requires a Redshift Serverless namespace in us-east-1(N. Virginia) or us-west-2(Oregon) or eu-west-1(Ireland) or ap-northeast-1(Tokyo) regions as the data in s3 is located in these four regions.</p>
+</blockquote>
+<p><strong>6.2 Use-Case description</strong></p>
+<p><strong>Objective</strong>: Derive data insights to showcase the effect of blizzard on number of taxi rides in January 2016.</p>
+<p><strong>Data set description</strong>: NY city taxi trip data including number of taxi rides by year and month for 3 different taxi companies - fhv, green, and yellow.</p>
+<p><strong>Data set S3 location</strong>:</p>
+<ul>
+<li>
+<p><strong>us-east-1</strong> region - <a href="https://s3.console.aws.amazon.com/s3/buckets/redshift-demos?region=us-east-1&prefix=data/NY-Pub/">https://s3.console.aws.amazon.com/s3/buckets/redshift-demos?region=us-east-1&amp;prefix=data/NY-Pub/</a></p>
+</li>
+<li>
+<p><strong>us-west-2</strong> region - <a href="https://s3.console.aws.amazon.com/s3/buckets/us-west-2.serverless-analytics?prefix=canonical/NY-Pub/">https://s3.console.aws.amazon.com/s3/buckets/us-west-2.serverless-analytics?prefix=canonical/NY-Pub/</a></p>
+</li>
+<li>
+<p><strong>eu-west-1</strong> region - <a href="https://s3.console.aws.amazon.com/s3/buckets/redshift-demos-dub?region=eu-west-1&prefix=NY-Pub/">https://s3.console.aws.amazon.com/s3/buckets/redshift-demos-dub?region=eu-west-1&amp;prefix=NY-Pub/</a></p>
+</li>
+<li>
+<p><strong>ap-northeast-1</strong> region - <a href="https://s3.console.aws.amazon.com/s3/buckets/redshift-demos-nrt?region=ap-northeast-1&prefix=NY-Pub/">https://s3.console.aws.amazon.com/s3/buckets/redshift-demos-nrt?region=ap-northeast-1&amp;prefix=NY-Pub/</a></p>
+</li>
+</ul>
+<p>Below is an overview of the use case steps involved in this lab.
+<img alt="image.png" src="/images/6/6-2.png"></p>
+<p><strong>6.3 Instructions</strong></p>
+<p><strong>1. Create and run Glue crawler to populate Glue data catalog</strong></p>
+<p>In this part of the lab, we will perform following activities:</p>
+<ul>
+<li>Query historical data residing on S3 by creating an external DB for Redshift Spectrum.</li>
+<li>Introspect the historical data, perhaps rolling-up the data in novel ways to see trends over time, or other dimensions.</li>
+<li>Note the partitioning scheme is Year, Month, Type (where Type is a taxi company). Here&rsquo;s a Screenshot: <a href="https://s3.console.aws.amazon.com/s3/buckets/us-west-2.serverless-analytics/canonical/NY-Pub/">https://s3.console.aws.amazon.com/s3/buckets/us-west-2.serverless-analytics/canonical/NY-Pub/</a></li>
+</ul>
+<blockquote>
+<p>Region</p>
+<p>Clicking the above link may change your default region. When continuing to the next steps make sure that your region is correct before creating the Glue Crawler.</p>
+</blockquote>
+<p><img alt="image.png" src="/images/6/6-03.png"></p>
+<p><strong>Create external schema (and DB) for Redshift Spectrum</strong></p>
+<p>You can create an external table in Amazon Redshift, AWS Glue, Amazon Athena, or an Apache Hive metastore. If your external table is defined in AWS Glue, Athena, or a Hive metastore, you first create an external schema that references the external database. Then, you can reference the external table in your SELECT statement by prefixing the table name with the schema name, without needing to create the table in Amazon Redshift.</p>
+<p>In this lab, you will use AWS Glue Crawler to create external table <strong>adb305.ny_pub</strong> stored in <strong>parquet</strong> format in s3 location for that region.</p>
+<p><strong>+ Navigate to the Glue Crawler Page:</strong></p>
+<ul>
+<li>
+<p><strong>us-east-1</strong> region - <a href="https://us-east-1.console.aws.amazon.com/glue/home">https://us-east-1.console.aws.amazon.com/glue/home</a></p>
+</li>
+<li>
+<p><strong>us-west-2</strong> region - <a href="https://us-west-2.console.aws.amazon.com/glue/home">https://us-west-2.console.aws.amazon.com/glue/home</a></p>
+</li>
+<li>
+<p><strong>eu-west-1</strong> region - <a href="https://eu-west-1.console.aws.amazon.com/glue/home">https://eu-west-1.console.aws.amazon.com/glue/home</a></p>
+</li>
+<li>
+<p><strong>ap-northeast-1</strong> region - <a href="https://ap-northeast-1.console.aws.amazon.com/glue/home">https://ap-northeast-1.console.aws.amazon.com/glue/home</a></p>
+</li>
+</ul>
+<p><img alt="image.png" src="/images/6/6-4.png"></p>
+<p><strong>+</strong> Click on <strong>Create Crawler</strong>, and enter the crawler name <strong>NYTaxiCrawler</strong> and click <strong>Next</strong>.</p>
+<p><img alt="image.png" src="/images/6/6-5.png"></p>
+<p><strong>+</strong> Click on <strong>Add a data source</strong>.</p>
+<p><img alt="image.png" src="/images/6/6-6.png"></p>
+<p><strong>+</strong> Choose <strong>S3</strong> as the data store.</p>
+<p><strong>+</strong> Select <strong>In a different account</strong></p>
+<p><strong>+</strong> Enter S3 file path -</p>
+<ul>
+<li>
+<p>For <strong>us-east-1</strong> region - <code>s3://redshift-demos/data/NY-Pub/</code></p>
+</li>
+<li>
+<p>For <strong>us-west-2</strong> region - <code>s3://us-west-2.serverless-analytics/canonical/NY-Pub/</code></p>
+</li>
+<li>
+<p>For <strong>eu-west-1</strong> region - <code>s3://redshift-demos-dub/NY-Pub/</code></p>
+</li>
+<li>
+<p>For <strong>ap-northeast-1</strong> region - <code>s3://redshift-demos-nrt/NY-Pub/</code></p>
+</li>
+</ul>
+<p><strong>+</strong> Click on <strong>Add an S3 data source</strong>.</p>
+<p><img alt="image.png" src="/images/6/6-7.png"></p>
+<p><strong>+</strong> Click <strong>Next</strong></p>
+<p><img alt="image.png" src="/images/6/6-8.png"></p>
+<p><strong>+</strong> Click <strong>Create new IAM role</strong> and click <strong>Next</strong></p>
+<p><img alt="image.png" src="/images/6/6-9.png"></p>
+<p><strong>+</strong> Enter <strong>AWSGlueServiceRole-RedshiftImmersion</strong> and click <strong>Create</strong></p>
+<p><img alt="image.png" src="/images/6/6-10.png"></p>
+<p><strong>+</strong> Click on <strong>Add database</strong> and enter Name <strong>spectrumdb</strong></p>
+<p><img alt="image.png" src="/images/6/6-11.png"></p>
+<p><img alt="image.png" src="/images/6/6-012.png"></p>
+<p><strong>+</strong> Go back to <strong>Glue Console</strong>, refresh the target database and select <strong>spectrumdb</strong></p>
+<p><img alt="image.png" src="/images/6/6-13.png"></p>
+<p><strong>+</strong> Select all remaining defaults and click <strong>Create crawler</strong>. Select the crawler - <strong>NYTaxiCrawler</strong> and click <strong>Run</strong>.</p>
+<p><img alt="image.png" src="/images/6/6-14.png"></p>
+<p><strong>+</strong> After Crawler run completes, you can see a new table <strong>ny_pub</strong> in <strong>Glue Catalog</strong></p>
+<p><img alt="image.png" src="/images/6/6-015.png"></p>
+<p><strong>2. Create external schema adb305 in Redshift and select from Glue catalog table - ny_pub</strong></p>
+<p><strong>+</strong> Go to <strong>Redshift console</strong>.</p>
+<ul>
+<li>
+<p><strong>us-east-1</strong> region - <a href="https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#/serverless-setup">https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#/serverless-setup</a></p>
+</li>
+<li>
+<p><strong>-west-2</strong> region - <a href="https://us-west-2.console.aws.amazon.com/redshiftv2/home?region=us-west-2#/serverless-setup">https://us-west-2.console.aws.amazon.com/redshiftv2/home?region=us-west-2#/serverless-setup</a></p>
+</li>
+<li>
+<p><strong>eu-west-1</strong> region - <a href="https://eu-west-1.console.aws.amazon.com/redshiftv2/home?region=eu-west-1#/serverless-setup">https://eu-west-1.console.aws.amazon.com/redshiftv2/home?region=eu-west-1#/serverless-setup</a></p>
+</li>
+<li>
+<p><strong>ap-northeast-</strong> region - <a href="https://ap-northeast-1.console.aws.amazon.com/redshiftv2/home?region=ap-northeast-1#/serverless-setup">https://ap-northeast-1.console.aws.amazon.com/redshiftv2/home?region=ap-northeast-1#/serverless-setup</a></p>
+</li>
+</ul>
+<p>Click on <strong>Serverless dashboard</strong> menu item to the left side of the console. Click on the name space provisioned earlier. Click <strong>Query data</strong>.</p>
+<p><img alt="image.png" src="/images/6/6-016.png"></p>
+<ul>
+<li>Create an external schema <strong>adb305</strong> pointing to your <strong>Glue Catalog Database spectrumdb</strong>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">external</span> <span style="color:#a6e22e">SCHEMA</span> <span style="color:#a6e22e">adb305</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">catalog</span> <span style="color:#a6e22e">DATABASE</span> <span style="color:#e6db74">&#39;spectrumdb&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">IAM_ROLE</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">external</span> <span style="color:#a6e22e">DATABASE</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">exists</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-017.png"></p>
+<p><strong>Pin-point the Blizzard</strong></p>
+<p>You can query the table <strong>ny_pub</strong>, defined in <strong>Glue Catalog</strong> from <strong>Redshift</strong> external schema. In January 2016, there is a date which had the lowest number of taxi rides due to a blizzard. Can you find that date?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">TO_CHAR</span>(<span style="color:#a6e22e">pickup_datetime</span>, <span style="color:#e6db74">&#39;YYYY-MM-DD&#39;</span>),<span style="color:#a6e22e">COUNT</span>(<span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">YEAR</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">Month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">01</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">2</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-18.png"></p>
+<p><strong>3. Create internal schema workshop_das</strong></p>
+<p>Create a schema <strong>workshop_das</strong> for tables that will reside on the <strong>Redshift Managed Storage</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">SCHEMA</span> <span style="color:#a6e22e">workshop_das</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-19.png"></p>
+<p><strong>4. Run CTAS to create and load Redshift table workshop_das.taxi_201601 by selecting from external table</strong></p>
+<p>Create table <strong>workshop_das.taxi_201601</strong> to load data for <strong>green</strong> taxi company for January 2016</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span> <span style="color:#a6e22e">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;green&#39;</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-20.png"></p>
+<p><strong>Note</strong>: What about column compression/encoding? Remember that on a CTAS, Amazon Redshift automatically assigns compression encoding as follows:</p>
+<ul>
+<li>Columns that are defined as sort keys are assigned RAW compression.</li>
+<li>Columns that are defined as BOOLEAN, REAL, or DOUBLE PRECISION, or GEOMETRY data types are assigned RAW compression.</li>
+<li>Columns that are defined as SMALLINT, INTEGER, BIGINT, DECIMAL, DATE, TIMESTAMP, or TIMESTAMPTZ are assigned AZ64 compression.</li>
+<li>Columns that are defined as CHAR or VARCHAR are assigned LZO compression.</li>
+</ul>
+<p><a href="https://docs.aws.amazon.com/redshift/latest/dg/r_CTAS_usage_notes.html">https://docs.aws.amazon.com/redshift/latest/dg/r_CTAS_usage_notes.html</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ANALYZE</span> <span style="color:#a6e22e">COMPRESSION</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-021.png"></p>
+<ul>
+<li>Add to the <strong>taxi_201601</strong> table with an <strong>INSERT/SELECT</strong> statement for other taxi companies.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">INSERT</span> <span style="color:#a6e22e">INTO</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span> (
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;green&#39;</span>);
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-22.png"></p>
+<p><strong>5. Drop 201601 partitions from external table</strong></p>
+<p>Now that we&rsquo;ve loaded all January, 2016 data, we can remove the partitions from the Spectrum table so there is no overlap between the <strong>Redshift Managed Storage (RMS)</strong> table and the <strong>Spectrum</strong> table.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fhv&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;green&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yellow&#39;</span>);
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-23.png"></p>
+<p><strong>6. Create combined view public.adb305_view_NY_TaxiRides</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">VIEW</span> <span style="color:#a6e22e">adb305_view_NYTaxiRides</span> <span style="color:#a6e22e">AS</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UNION</span> <span style="color:#a6e22e">ALL</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WITH</span> <span style="color:#a6e22e">NO</span> <span style="color:#a6e22e">SCHEMA</span> <span style="color:#a6e22e">BINDING</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-024.png"></p>
+<p><strong>Explain displays the execution plan for a query statement without running the query</strong></p>
+<ul>
+<li>Note the use of the partition columns in the SELECT and WHERE clauses. Where were those columns in your Spectrum table definition?</li>
+<li>Note the filters being applied either at the partition or file levels in the Spectrum dataset of the query (versus the Redshift Managed Storage dataset).</li>
+<li>If you actually run the query (and not just generate the explain plan), does the runtime surprise you? Why or why not?</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">EXPLAIN</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">year</span>, <span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">COUNT</span>(<span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305_view_NYTaxiRides</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#a6e22e">IN</span> (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>) <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">passenger_count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span> <span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-25.png"></p>
+<p><img alt="image.png" src="/images/6/6-026.png"></p>
+<p>Note the <strong>S3 Seq Scan</strong> was run against the data on Amazon S3. The <strong>S3 Seq Scan</strong> node shows the Filter: (passenger_count = 4) was processed in the <strong>Redshift Spectrum</strong> layer.</p>
+<p>For ways to improve Redshift Spectrum performance, please refer to <a href="https://docs.aws.amazon.com/redshift/latest/dg/c-spectrum-external-performance.html">https://docs.aws.amazon.com/redshift/latest/dg/c-spectrum-external-performance.html</a></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/5-machine-learning---redshift-ml/" title="Machine Learning - Redshift ML"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/7-operations/" title="Operations" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1725803905"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725803905"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725803905"></script>
+    <script src="/js/jquery.sticky.js?1725803905"></script>
+    <script src="/js/featherlight.min.js?1725803905"></script>
+    <script src="/js/highlight.pack.js?1725803905"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725803905"></script>
+    <script src="/js/learn.js?1725803905"></script>
+    <script src="/js/hugo-learn.js?1725803905"></script>
+
+    <link href="/mermaid/mermaid.css?1725803905" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725803905"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

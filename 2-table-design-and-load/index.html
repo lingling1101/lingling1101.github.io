@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.127.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Table Design and Load :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
+
+    
+    <link href="/css/nucleus.css?1725803905" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725803905" rel="stylesheet">
+    <link href="/css/hybrid.css?1725803905" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725803905" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725803905" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725803905" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725803905" rel="stylesheet">
+    <link href="/css/theme.css?1725803905" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725803905" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1725803905" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1725803905"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/2-table-design-and-load/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1725803905"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725803905"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/lingling1101.github.io\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1725803905"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-getting-started/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-getting-started/">
+           <b> 1. </b> Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-table-design-and-load/" title="Table Design and Load" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/2-table-design-and-load/">
+           <b> 2. </b> Table Design and Load
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ongoing-load---elt/" title="Ongoing Load - ELT" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ongoing-load---elt/">
+           <b> 3. </b> Ongoing Load - ELT
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-data-sharing/" title="Data Sharing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-data-sharing/">
+           <b> 4. </b> Data Sharing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-machine-learning---redshift-ml/" title="Machine Learning - Redshift ML" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-machine-learning---redshift-ml/">
+           <b> 5. </b> Machine Learning - Redshift ML
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-query-data-lake---redshift-spectrum/" title="Query Data Lake - Redshift Spectrum" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-query-data-lake---redshift-spectrum/">
+           <b> 6. </b> Query Data Lake - Redshift Spectrum
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-operations/" title="Operations" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-operations/">
+           <b> 7. </b> Operations
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-clean/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-clean/">
+           <b> 8. </b> Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://aws.amazon.com/blogs"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://lingling1101.github.io/2-table-design-and-load/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://lingling1101.github.io/vi/2-table-design-and-load/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>31-08-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://drive.google.com/drive/folders/1-JDjxDuFFq9Xwszz7REZ_kDzWDPtM1XS?usp=sharing"  style="color:orange">Nguyễn Thị Thùy Linh  </a> <br>
+                
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>Redshift Immersion Labs</a> > Table Design and Load
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Table Design and Load
+            </h1>
+          
+
+        
+
+
+
+	<p><strong>2. Table Design and Load</strong></p>
+<p><strong>Contents:</strong></p>
+<ul>
+<li>Before you begin</li>
+<li>Create tables</li>
+<li>Loading data
+-Troubleshooting loads</li>
+<li>Automatic table maintenance - ANALYZE and VACUUM</li>
+<li>Before you leave</li>
+</ul>
+<p><strong>2.1 Before you begin</strong></p>
+<p>This lab assumes that you have launched an Amazon Redshift Serverless endpoint. If you have not already done so, please see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Getting Started</a> and follow the instructions there. We will use Amazon Redshift <a href="https://ap-southeast-2.console.aws.amazon.com/sqlworkbench/home?region=ap-southeast-2#/account/configuration">QueryEditorV2</a> for this lab.</p>
+<p><strong>2.2 Create Tables</strong></p>
+<p>Amazon Redshift is an ANSI SQL compliant data warehouse. You can create tables using familiar <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_TABLE_NEW.html">CREATE TABLE</a> statements.</p>
+<p>To create 8 tables from TPC Benchmark data model, copy the following create table statements and run them. Given below is the data model for the tables.</p>
+<p><img alt="image.png" src="/images/2/2-1.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">partsupp</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">lineitem</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">supplier</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">part</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">orders</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">customer</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">nation</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">IF</span> <span style="color:#a6e22e">EXISTS</span> <span style="color:#a6e22e">region</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">region</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">R_REGIONKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">R_NAME</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">R_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">152</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">nation</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">N_NATIONKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">N_NAME</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">N_REGIONKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">N_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">152</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">customer</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_CUSTKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_NAME</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_ADDRESS</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">40</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_NATIONKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_PHONE</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_ACCTBAL</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_MKTSEGMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">C_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">117</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">orders</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_CUSTKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERSTATUS</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_TOTALPRICE</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERDATE</span> Date,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_ORDERPRIORITY</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_CLERK</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_SHIPPRIORITY</span> <span style="color:#a6e22e">Integer</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">O_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">79</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">distkey</span> (<span style="color:#a6e22e">O_ORDERKEY</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sortkey</span> (<span style="color:#a6e22e">O_ORDERDATE</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">part</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_PARTKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_NAME</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">55</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_MFGR</span>  <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_BRAND</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_TYPE</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_SIZE</span> <span style="color:#a6e22e">integer</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_CONTAINER</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_RETAILPRICE</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">P_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">23</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">supplier</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_SUPPKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_NAME</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_ADDRESS</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">40</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_NATIONKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_PHONE</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_ACCTBAL</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">S_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">101</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">lineitem</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_ORDERKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_PARTKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_SUPPKEY</span> <span style="color:#a6e22e">bigint</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_LINENUMBER</span> <span style="color:#a6e22e">integer</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_QUANTITY</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_EXTENDEDPRICE</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_DISCOUNT</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_TAX</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_RETURNFLAG</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_LINESTATUS</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_SHIPDATE</span> <span style="color:#a6e22e">date</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_COMMITDATE</span> <span style="color:#a6e22e">date</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_RECEIPTDATE</span> <span style="color:#a6e22e">date</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_SHIPINSTRUCT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">25</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_SHIPMODE</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">44</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">distkey</span> (<span style="color:#a6e22e">L_ORDERKEY</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sortkey</span> (<span style="color:#a6e22e">L_RECEIPTDATE</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">partsupp</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">PS_PARTKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">PS_SUPPKEY</span> <span style="color:#a6e22e">bigint</span> <span style="color:#a6e22e">NOT</span> <span style="color:#a6e22e">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">PS_AVAILQTY</span> <span style="color:#a6e22e">integer</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">PS_SUPPLYCOST</span> <span style="color:#a6e22e">decimal</span>(<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">4</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">PS_COMMENT</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">199</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">even</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-2.png"></p>
+<p><img alt="image.png" src="/images/2/2-33.png"></p>
+<p><strong>2.3 Data Loading</strong></p>
+<p>In this lab, you will learn following approaches to load data into Redshift.</p>
+<ol>
+<li>Load data from S3 to Redshift. You will use this process for loading 7 tables out of 8 tables created in above step.</li>
+<li>Load data from your desktop file to Redshift. You will use this process for loading 1 table out of 8 created in above step i.e. nation table.</li>
+</ol>
+<p>We split the load process to make you familiar with both the approaches.</p>
+<ul>
+<li><strong>Loading data from S3</strong></li>
+</ul>
+<p><a href="https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">COPY command</a> loads large amounts of data effectively from Amazon S3 into Amazon Redshift. A single COPY command can load from multiple files into one table. It automatically loads the data in parallel from all the files present in the S3 location you provide.</p>
+<p>If the target table is empty, <strong>COPY</strong> Command can perform compression encoding for each column automatically based on the column datatype so that you need not worry about choosing the right compression algorithm for each column. To ensure that Redshift performs a compression analysis, we are going to set the <strong>COMPUPDATE</strong> parameter to <strong>PRESET</strong> in the <strong>COPY</strong> commands.</p>
+<p>The sample data to load is made available in a public <a href="https://us-west-2.console.aws.amazon.com/s3/buckets/redshift-immersionday-labs?region=us-west-2&prefix=data%2F&showversions=false&bucketType=general">Amazon S3 bucket</a>.</p>
+<p>Copy the following statements to load data into 7 tables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">COPY</span> <span style="color:#a6e22e">region</span> <span style="color:#a6e22e">FROM</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/region/region.tbl.lzo&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">customer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/customer/customer.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">orders</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/orders/orders.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">part</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/part/part.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">supplier</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/supplier/supplier.json&#39;</span> <span style="color:#a6e22e">manifest</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">lineitem</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/lineitem-part/&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">gzip</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy</span> <span style="color:#a6e22e">partsupp</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/partsupp/partsupp.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">COMPUPDATE</span> <span style="color:#a6e22e">PRESET</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-4.png"></p>
+<p>The estimated time to load the data is as follows. While waiting for the copy process to finish, you can move to next section <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2#loading-data-from-your-local-machine-using-qev2">Loading data from your local machine using QEV2</a>.</p>
+<ul>
+<li>REGION (5 rows) - 2s</li>
+<li>CUSTOMER (15M rows) – 2m</li>
+<li>ORDERS - (76M rows) - 10s</li>
+<li>PART - (20M rows) - 2m</li>
+<li>SUPPLIER - (1M rows) - 10s</li>
+<li>LINEITEM - (303M rows) - 22s</li>
+<li>PARTSUPPLIER - (80M rows) - 15s</li>
+</ul>
+<p><strong>Note:</strong> A few key takeaways from the above COPY statements.</p>
+<ul>
+<li>
+<p><strong>COMPUPDATE PRESET ON</strong> will assign compression using the Amazon Redshift best practices related to the data type of the column but without analyzing the data in the table.</p>
+</li>
+<li>
+<p><strong>COPY</strong> for the <strong>REGION</strong> table points to a specific file (region.tbl.lzo) while COPY for other tables point to a prefix to multiple files (lineitem.tbl.).</p>
+</li>
+<li>
+<p><strong>COPY</strong> for the <strong>SUPPLIER</strong> table points a manifest file (supplier.json). A manifest file is a JSON file that lists the files to be loaded and their locations.</p>
+</li>
+<li>
+<p><strong>Loading data from your local machine using QEV2</strong></p>
+</li>
+</ul>
+<p>You will be loading the nation table through query editor v2 by importing the data from your local machine.</p>
+<p><em>+ One time setup</em></p>
+<p>As a one time setup, you need to create a S3 bucket in the same region as redshift instance. And add the S3 bucket path in QEV2 account setting page.</p>
+<p>S3 bucket is already pre-created in this lab environment. Navigate to <a href="https://ap-southeast-2.signin.aws.amazon.com/oauth?response_type=code&client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcloudformation&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fcloudformation%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26oauthStart%3D1723994246570%26state%3DhashArgsFromTB_ap-southeast-2_4edb45c164185361&forceMobileLayout=0&forceMobileApp=0&code_challenge=9xZ7-RKc3ZqaBRZs2hRfaMaNN99JIO-vOWYdGlBdM6M&code_challenge_method=SHA-256">AWS CloudFormation</a>  and click on &lsquo;cfn&rsquo; stack. Under &lsquo;Outputs&rsquo; tab note down the S3Bucket. You’ll need this value in next step.</p>
+<p><img alt="image.png" src="/images/2/2-55.png"></p>
+<p>In QEV2 go to <strong>Settings</strong>(bottom left) &ndash;&gt; <strong>Account settings</strong> &ndash;&gt; <strong>S3 bucket name</strong>.</p>
+<p><img alt="image.png" src="/images/2/2-62.png"></p>
+<p><img alt="image.png" src="/images/2/2-77.png"></p>
+<p><em>+Load File</em></p>
+<p>You can download the sample <a href="https://redshift-immersionday-labs.s3.us-west-2.amazonaws.com/data/nation/Nation.csv"><em>Nation.csv</em></a> file onto your local machine using the below link.</p>
+<p>Let us load the downloaded <em>Nation</em> file on your desktop into Redshift.</p>
+<ol>
+<li>From <strong>resources</strong> section, select and connect to your serverless workgroup.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong>
+The <em>Nation</em> table is already created in the <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2#create-tables">Create Tables</a> step. However you can also create a table through user interface by following <strong>Create</strong>&ndash;&gt;<strong>Table</strong> option in left navigation pane in <em>Query Editor v2</em>.</p>
+</blockquote>
+<ol start="2">
+<li>Click on <strong>Load data</strong> &ndash; select <strong>Load from local file</strong> &ndash; Browse and select the Nation.csv file downloaded earlier &ndash; <strong>Data conversion parameters</strong> &ndash; <strong>Check Ignore header rows</strong> &ndash; <strong>Next</strong> &ndash; <strong>Table options</strong> select your serverless work group &ndash; <strong>Databas</strong>e = dev &ndash; <strong>Schema</strong> = public &ndash; <strong>Table</strong> = nation &ndash; <strong>Load data</strong> &ndash; Notification of<strong>Loading data from a local file succeeded</strong> would be shown on top.</li>
+</ol>
+<p><img alt="image.png" src="/images/2/2-81.png"></p>
+<blockquote>
+<p><strong>Note:</strong> Machines with upload restrictions</p>
+<p>If your machine has restrictions that don’t allow uploads to S3, you will not be able to load a local file. However, you can use the Query Editor v to load a file directly from S3. To do this, select the <strong>Load from S3 bucket</strong> option and input the following location:</p>
+<p><code>s3://redshift-immersionday-labs/data/nation/Nation.csv</code></p>
+<p>You will need to select the S3 location as <strong>us-west-2</strong>.</p>
+<p>Follow the instructions below as-is. The only change is selecting the IAM role when choosing which table to load. There will be only one role available in AWS Sponsored Events (<strong>RedshiftServerlessImmersionRole</strong>).</p>
+</blockquote>
+<p><img alt="image.png" src="/images/2/2-91.png"></p>
+<p><img alt="image.png" src="/images/2/2-101.png"></p>
+<p><strong>2.4 Load Validation</strong></p>
+<p>Let us do a quick check of counts on few tables to ensure data is loaded as expected. You can open a new editor and run below queries if the copy process is still loading some tables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span> <span style="color:#f92672">--</span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">region</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">--</span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">nation</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">--</span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">76</span>,<span style="color:#ae81ff">000</span>,<span style="color:#ae81ff">000</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">orders</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-11.png"></p>
+<p><img alt="image.png" src="/images/2/2-12.png"></p>
+<p><img alt="image.png" src="/images/2/2-13.png"></p>
+<p><strong>2.5 Troubleshooting Loads</strong></p>
+<p>To troubleshoot any data load issues, you can query <code>SYS_LOAD_ERROR_DETAIL</code>.</p>
+<p>In addition, you can validate your data without actually loading the table. You can use the <code>NOLOAD</code> option with the <code>COPY</code> command to make sure that your data will load without any errors before running the actual data load. Notice that running <code>COPY</code> with the <code>NOLOAD</code> option is much faster than loading the data since it only parses the files.</p>
+<p>Let’s try to load the <code>CUSTOMER</code> table with a different data file with mismatched columns.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">COPY</span> <span style="color:#a6e22e">customer</span> <span style="color:#a6e22e">FROM</span> <span style="color:#e6db74">&#39;s3://redshift-immersionday-labs/data/nation/nation.tbl.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iam_role</span> <span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">region</span> <span style="color:#e6db74">&#39;us-west-2&#39;</span> <span style="color:#a6e22e">lzop</span> <span style="color:#a6e22e">delimiter</span> <span style="color:#e6db74">&#39;|&#39;</span> <span style="color:#a6e22e">noload</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-14.png"></p>
+<p>You will get the following error.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ERROR</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Load</span> <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">table</span> <span style="color:#e6db74">&#39;customer&#39;</span> <span style="color:#a6e22e">failed</span>. <span style="color:#a6e22e">Check</span> <span style="color:#e6db74">&#39;sys_load_error_detail&#39;</span> <span style="color:#a6e22e">system</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">details</span>.
+</span></span></code></pre></div><p>Query the STL_LOAD_ERROR system table for details.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SYS_LOAD_ERROR_DETAIL</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-15.png"></p>
+<p>Notice that there is one row for the column c_nationkey with datatype int with an error message &ldquo;Invalid digit, Value &lsquo;h&rsquo;, Pos 1&rdquo; indicating that you are trying to load character into an integer column.</p>
+<p><strong>2.6 Automatic Table Maintenance - ANALYZE and VACUUM</strong></p>
+<ul>
+<li><strong>Analyze:</strong></li>
+</ul>
+<p>When loading into an empty table, the <code>COPY</code> command by default collects statistics (ANALYZE). If you are loading a non-empty table using <code>COPY</code> command, in most cases, you don&rsquo;t need to explicitly run the <code>ANALYZE</code> command. Amazon Redshift monitors changes to your workload and automatically updates statistics in the background. To minimize impact to your system performance, automatic analyze runs during periods when workloads are light.</p>
+<p>If you need to analyze the table immediately after load, you can still manually run <code>ANALYZ</code>E` command.</p>
+<p>To run <code>ANALYZE</code> on <code>orders</code> table, copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ANALYZE</span> <span style="color:#a6e22e">orders</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-16.png"></p>
+<ul>
+<li><strong>Vacuum:</strong></li>
+</ul>
+<p><strong>+ Vacuum Delete:</strong> When you perform delete on a table, the rows are marked for deletion(soft deletion), but are not removed. When you perform an update, the existing rows are marked for deletion(soft deletion) and updated rows are inserted as new rows. Amazon Redshift automatically runs a <code>VACUUM DELETE</code> operation in the background to reclaim disk space occupied by rows that were marked for deletion by <code>UPDATE</code> and <code>DELETE</code> operations, and compacts the table to free up the consumed space. To minimize impact to your system performance, automatic VACUUM <code>DELETE</code> runs during periods when workloads are light.</p>
+<p>If you need to reclaim diskspace immediately after a large delete operation, for example after a large data load, then you can still manually run the <code>VACUUM DELETE</code> command. Lets see how <code>VACUUM DELETE</code> reclaims table space after delete operation.</p>
+<p>First, capture <code>tbl_rows</code>(Total number of rows in the table. This value includes rows marked for deletion, but not yet vacuumed) and <code>estimated_visible_rows</code>(The estimated visible rows in the table. This value does not include rows marked for deletion) for the ORDERS table. Copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#e6db74">&#34;table&#34;</span>, <span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">tbl_rows</span>, <span style="color:#a6e22e">estimated_visible_rows</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SVV_TABLE_INFO</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">where</span> <span style="color:#e6db74">&#34;table&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;orders&#39;</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-17.png"></p>
+<p>Next, delete rows from the ORDERS table. Copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">orders</span> <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">o_orderdate</span> <span style="color:#a6e22e">between</span> <span style="color:#e6db74">&#39;1997-01-01&#39;</span> <span style="color:#a6e22e">and</span> <span style="color:#e6db74">&#39;1998-01-01&#39;</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-18.png"></p>
+<p>Next, capture the tbl_rows and estimated_visible_rows for ORDERS table after the deletion.</p>
+<p>Copy the following command and run it. Notice that the tbl_rows value hasn&rsquo;t changed, after deletion. This is because rows are marked for soft deletion, but VACUUM DELETE is not yet run to reclaim space.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#e6db74">&#34;table&#34;</span>, <span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">tbl_rows</span>, <span style="color:#a6e22e">estimated_visible_rows</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SVV_TABLE_INFO</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">where</span> <span style="color:#e6db74">&#34;table&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;orders&#39;</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-19.png"></p>
+<p>Now, run the VACUUM DELETE command. Copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">vacuum</span> <span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">orders</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-20.png"></p>
+<p>Confirm that the VACUUM command reclaimed space by running the following query again and noting the tbl_rows value has changed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#e6db74">&#34;table&#34;</span>, <span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">tbl_rows</span>, <span style="color:#a6e22e">estimated_visible_rows</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SVV_TABLE_INFO</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">where</span> <span style="color:#e6db74">&#34;table&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;orders&#39;</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-21.png"></p>
+<p><strong>+ Vacuum Sort:</strong></p>
+<p>Vacuum Sort: When you define <strong>SORT KEYS</strong>  on your tables, Amazon Redshift automatically sorts data in the background to maintain table data in the order of its sort key. Having sort keys on frequently filtered columns makes block level pruning, which is already efficient in Amazon Redshift, more efficient.</p>
+<p>Amazon Redshift keeps track of your scan queries to determine which sections of the table will benefit from sorting and it automatically runs <code>VACUUM SORT</code> to maintain sort key order. To minimize impact to your system performance, automatic <code>VACUUM SORT</code> runs during periods when workloads are light.</p>
+<p><code>COPY</code> command automatically sorts and loads the data in sort key order. As a result, if you are loading an empty table using <code>COPY</code> command, the data is already in sort key order. If you are loading a non-empty table using <code>COPY</code> command, you can optimize the loads by loading data in incremental sort key order because <code>VACUUM SORT</code> will not be needed when your load is already in sort key order</p>
+<p>For example, <code>orderdate</code> is the sort key on <code>orders</code> table. If you always load data into <code>orders</code> table where <code>orderdate</code> is the current date, since current date is forward incrementing, data will always be loaded in incremental sortkey(<code>orderdate</code>) order. Hence, in that case <code>VACUUM SORT</code> will not be needed for <code>orders</code> table.</p>
+<p>If you need to run <code>VACUUM SORT</code>, you can still manually run it as shown below. Copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">vacuum</span> <span style="color:#a6e22e">sort</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">orders</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-22.png"></p>
+<p><strong>+ Vacuum Recluster:</strong></p>
+<p>Use <code>VACUUM</code> recluster whenever possible for manual <code>VACUUM</code> operations. This is especially important for large objects with frequent ingestion and queries that access only the most recent data. <code>Vacuum recluster</code> only sorts the portions of the table that are unsorted and hence runs faster. Portions of the table that are already sorted are left intact. This command doesn&rsquo;t merge the newly sorted data with the sorted region. It also doesn&rsquo;t reclaim all space that is marked for deletion.</p>
+<p>In order to run vacuum recluster on orders, copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">vacuum</span> <span style="color:#a6e22e">recluster</span> <span style="color:#a6e22e">orders</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-23.png"></p>
+<p><strong>+ Vacuum Boost:</strong></p>
+<p><code>Boost</code> runs the <code>VACUUM</code> command with additional compute resources, as they&rsquo;re available. With the <code>BOOST</code> option, <code>VACUUM</code> operates in one window and blocks concurrent deletes and updates for the duration of the <code>VACUUM</code> operation. Note that running vacuum with the <code>BOOST</code> option contends for system resources, which might affect performance of other queries. As a result, it is recommended to run the <code>VACUUM BOOST</code> when the load on the system is light, such as during maintenance operations.</p>
+<p>In order to run vacuum recluster on orders table in boost mode, copy the following command and run it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">vacuum</span> <span style="color:#a6e22e">recluster</span> <span style="color:#a6e22e">orders</span> <span style="color:#a6e22e">boost</span>;
+</span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-24.png"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/1-getting-started/" title="Getting Started"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/3-ongoing-load---elt/" title="Ongoing Load - ELT" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1725803905"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725803905"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725803905"></script>
+    <script src="/js/jquery.sticky.js?1725803905"></script>
+    <script src="/js/featherlight.min.js?1725803905"></script>
+    <script src="/js/highlight.pack.js?1725803905"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725803905"></script>
+    <script src="/js/learn.js?1725803905"></script>
+    <script src="/js/hugo-learn.js?1725803905"></script>
+
+    <link href="/mermaid/mermaid.css?1725803905" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725803905"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
