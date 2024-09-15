@@ -12,21 +12,21 @@
     <title>Data Sharing :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -437,7 +437,14 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#4-data-sharing"><strong>4. Data Sharing</strong></a></li>
+        <li><a href="#contents"><strong>Contents</strong></a></li>
+        <li><a href="#41-before-you-begin"><strong>4.1 Before you begin</strong></a></li>
+        <li><a href="#42-introduction"><strong>4.2 Introduction</strong></a></li>
+        <li><a href="#43-identify-namespaces"><strong>4.3 Identify namespaces</strong></a></li>
+        <li><a href="#44-create-data-share-on-producer"><strong>4.4 Create data share on producer</strong></a></li>
+        <li><a href="#45-query-data-from-consumer"><strong>4.5 Query data from consumer</strong></a></li>
+        <li><a href="#optional">[OPTIONAL]</a></li>
       </ul>
     </li>
   </ul>
@@ -465,9 +472,9 @@
 
 
 
-	<p><strong>4. Data Sharing</strong></p>
+	<h3 id="4-data-sharing"><strong>4. Data Sharing</strong></h3>
 <p>In this lab, you will walk through steps for data sharing between a serverless endpoint and a provisioned cluster.</p>
-<p><strong>Contents</strong></p>
+<h3 id="contents"><strong>Contents</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Introduction</li>
@@ -478,15 +485,19 @@
 <li>Load local data and join to shared data</li>
 <li>Before you leave</li>
 </ul>
-<p><strong>4.1 Before you begin</strong></p>
+<h3 id="41-before-you-begin"><strong>4.1 Before you begin</strong></h3>
 <p>This lab assumes that you have launched an Amazon Redshift Serverless endpoint and Provisioned cluster. If you have not already done so, please see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1"><strong>Getting Started</strong></a> and follow the instructions there. We will use <a href="https://console.aws.amazon.com/sqlworkbench/home">Amazon Redshift QueryEditorV2</a>  for this lab.</p>
-<p><strong>4.2 Introduction</strong></p>
+<h3 id="42-introduction"><strong>4.2 Introduction</strong></h3>
 <p><strong>A datashare</strong> <em>is the unit of sharing data in Amazon Redshift. Use datashares to share data in the same AWS account or different AWS accounts. Also, share data for read purposes across different Amazon Redshift clusters. Each datashare is associated with a specific database in your Amazon Redshift cluster.</em></p>
 <p><em>Datashare objects are objects from specific databases on a cluster that producer cluster administrators can add to datashares to be shared with data consumers. Datashare objects are read-only for data consumers. Examples of datashare objects are tables, views, and user-defined functions. You can add datashare objects to datashares while creating datashares or editing a datashare at any time.</em></p>
+<blockquote>
 <p><strong>Reference:</strong> <a href="https://aws.amazon.com/redshift/features/data-sharing/">Amazon Redshift Data Sharing</a></p>
-<p><strong>4.3 Identify namespaces</strong></p>
+</blockquote>
+<h3 id="43-identify-namespaces"><strong>4.3 Identify namespaces</strong></h3>
 <p>We will run simple SQL statements to find the namespace for both producer cluster and consumer cluster. These values will be used in subsequent instructions.</p>
+<blockquote>
 <p><strong>NOTE:</strong> namespace is globally unique identifier (GUID) automatically created during Amazon Redshift cluster creation and attached to the cluster. It is used to uniquely reference the Redshift cluster.</p>
+</blockquote>
 <p>Run following command in query editor connecting to serverless endpoint (producer - Serverless: workgroup-xxxxxxx). Note down the namespace from output. Ensure that the editor is connected to the producer cluster.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">producer</span> 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">current_namespace</span>;
@@ -495,7 +506,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">consumer</span> 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">current_namespace</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-012.png"></p>
-<p><strong>4.4 Create data share on producer</strong></p>
+<h3 id="44-create-data-share-on-producer"><strong>4.4 Create data share on producer</strong></h3>
 <p>Run following commands connecting to the serverless endpoint (producer - Serverless: workgroup-xxxxxxx) to create a data share and add <code>customer</code> table to data share.</p>
 <p>Replace <code>&lt;&lt;consumer namespace&gt;&gt;</code> with the consumer cluster namespace captured begining of this lab.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Creating</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">datashare</span>
@@ -514,9 +525,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Granting</span> <span style="color:#a6e22e">access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">consumer</span> <span style="color:#a6e22e">cluster</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">Grant</span> <span style="color:#a6e22e">USAGE</span> <span style="color:#a6e22e">ON</span> <span style="color:#a6e22e">DATASHARE</span> <span style="color:#a6e22e">cust_share</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">NAMESPACE</span> <span style="color:#e6db74">&#39;&lt;&lt;consumer namespace&gt;&gt;&#39;</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-04.png"></p>
-<p><strong>4.5 Query data from consumer</strong></p>
+<h3 id="45-query-data-from-consumer"><strong>4.5 Query data from consumer</strong></h3>
 <p>Please run following commands in the provisioned cluster (consumer - consumercluster-xxxxxxxxxx) to create a local database on shared data.</p>
+<blockquote>
 <p><strong>NOTE:</strong> Replace <code>&lt;&lt;producer namespace&gt;&gt;</code> with the producer namespace captured begining of this lab.</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">View</span> <span style="color:#a6e22e">shared</span> <span style="color:#a6e22e">objects</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">datashares</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SVV_DATASHARE_OBJECTS</span>;
@@ -527,7 +540,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">query</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">count</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cust_db</span>.<span style="color:#66d9ef">public</span>.<span style="color:#a6e22e">customer</span>; <span style="color:#f92672">--</span> <span style="color:#a6e22e">count</span> <span style="color:#ae81ff">15000000</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-05.png"></p>
-<h4 id="optional">[OPTIONAL]</h4>
+<h3 id="optional">[OPTIONAL]</h3>
 <p><strong>- Create external schema in consumer</strong></p>
 <p>Running the following command in the provisioned consumer cluster (consumer - consumercluster-xxxxxxxxxx) will create an external schema called cust_db_public in your consumer&rsquo;s dev database. This is useful when you require all of your data to be available in a single database, simplifying SQL statements to use two-dot notation instead of three-dot (as shown in the next step). This step is also necessary when using some BI tools to allow metadata to be correctly refreshed in their UI. Creating an external schema using a datashare object can also simplify the process of splitting workloads to datasharing clusters. By creating external schemas in your consumer cluster with the same name as in the producer, workload queries can be migrated to the consumer cluster without needing any change.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">local</span> <span style="color:#a6e22e">schema</span>
@@ -539,7 +552,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">query</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">count</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cust_db_public</span>.<span style="color:#a6e22e">customer</span>; <span style="color:#f92672">--</span> <span style="color:#a6e22e">count</span> <span style="color:#ae81ff">15000000</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-6.png"></p>
+<blockquote>
 <p><strong>Notice:</strong> you get the same results as in the previous step, but the select statement is using the new external schema.</p>
+</blockquote>
 <p><strong>- Load local data and join to shared data</strong></p>
 <p>Run following commands in a query editor tab that is to the provisioned cluster (consumer - consumercluster-xxxxxxxxxx). The following commands are used to create and load orders table data that will be later joined with customer data shared from the producer endpoint.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">orders</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">provisioned</span> <span style="color:#a6e22e">cluster</span> (<span style="color:#a6e22e">consumer</span>).
@@ -767,19 +782,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390282"></script>
+    <script src="/js/jquery.sticky.js?1726390282"></script>
+    <script src="/js/featherlight.min.js?1726390282"></script>
+    <script src="/js/highlight.pack.js?1726390282"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390282"></script>
+    <script src="/js/learn.js?1726390282"></script>
+    <script src="/js/hugo-learn.js?1726390282"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390282" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390282"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

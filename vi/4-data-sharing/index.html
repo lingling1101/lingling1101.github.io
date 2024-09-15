@@ -12,21 +12,21 @@
     <title>Chia sẻ dữ liệu :: LÀM VIỆC VỚI AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390283" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390283" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390283" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390283" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390283" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390283" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390283" rel="stylesheet">
+    <link href="/css/theme.css?1726390283" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390283" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390283" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390283"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390283"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390283"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390283"></script>
 
     
   </div>
@@ -433,7 +433,22 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#4-chia-sẻ-dữ-liệu"><strong>4. Chia sẻ dữ liệu</strong></a></li>
+        <li><a href="#nội-dung"><strong>Nội dung</strong></a></li>
+        <li><a href="#41-trước-khi-bắt-đầu"><strong>4.1 Trước khi bắt đầu</strong></a></li>
+        <li><a href="#42-giới-thiệu"><strong>4.2 Giới thiệu</strong></a></li>
+        <li><a href="#43-xác-định-không-gian-tên-namespace"><strong>4.3 Xác định không gian tên (namespace):</strong></a></li>
+        <li><a href="#44-tạo-data-share-trên-máy-chủ-sản-xuất-producer"><strong>4.4 Tạo data share trên máy chủ sản xuất (producer)</strong></a></li>
+        <li><a href="#45-truy-vấn-dữ-liệu-từ-máy-chủ-tiêu-thụ-consumer"><strong>4.5 Truy vấn dữ liệu từ máy chủ tiêu thụ (consumer)</strong></a></li>
+        <li><a href="#tùy-chọn">[TÙY CHỌN]</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,9 +472,9 @@
 
 
 
-	<p><strong>4. Chia sẻ dữ liệu</strong></p>
+	<h3 id="4-chia-sẻ-dữ-liệu"><strong>4. Chia sẻ dữ liệu</strong></h3>
 <p>Bạn sẽ thực hiện các bước để chia sẻ dữ liệu giữa một endpoint serverless và một cluster được cung cấp.</p>
-<p><strong>Nội dung</strong></p>
+<h3 id="nội-dung"><strong>Nội dung</strong></h3>
 <ul>
 <li>Trước khi bắt đầu</li>
 <li>Giới thiệu</li>
@@ -470,15 +485,19 @@
 <li>Tải dữ liệu cục bộ và kết hợp với dữ liệu chia sẻ</li>
 <li>Trước khi rời khỏi</li>
 </ul>
-<p><strong>4.1 Trước khi bắt đầu</strong></p>
+<h3 id="41-trước-khi-bắt-đầu"><strong>4.1 Trước khi bắt đầu</strong></h3>
 <p>Hướng dẫn này giả định rằng bạn đã khởi chạy một Amazon Redshift Serverless endpoint và một cluster được cung cấp. Nếu bạn chưa làm như vậy, vui lòng xem phần <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1"><strong>Hướng dẫn bắt đầu</strong></a> và làm theo các hướng dẫn tại đó. Chúng tôi sẽ sử dụng <a href="https://console.aws.amazon.com/sqlworkbench/home">Amazon Redshift QueryEditorV2</a> cho bài lab này.</p>
-<p><strong>4.2 Giới thiệu</strong></p>
+<h3 id="42-giới-thiệu"><strong>4.2 Giới thiệu</strong></h3>
 <p><em>Một <strong>datashare</strong> là đơn vị chia sẻ dữ liệu trong Amazon Redshift. Sử dụng datashares để chia sẻ dữ liệu trong cùng một tài khoản AWS hoặc các tài khoản AWS khác. Đồng thời, chia sẻ dữ liệu để đọc từ các cluster Amazon Redshift khác nhau. Mỗi datashare liên kết với một cơ sở dữ liệu cụ thể trong cluster Amazon Redshift của bạn.</em></p>
 <p><em>Các đối tượng datashare là các đối tượng từ các cơ sở dữ liệu cụ thể trên một cluster mà các quản trị viên của cluster sản xuất có thể thêm vào datashares để chia sẻ với các người tiêu thụ dữ liệu. Các đối tượng datashare chỉ đọc cho người tiêu thụ dữ liệu. Ví dụ về các đối tượng datashare bao gồm bảng, view và hàm do người dùng định nghĩa. Bạn có thể thêm các đối tượng datashare vào datashares trong khi tạo datashares hoặc chỉnh sửa một datashare vào bất kỳ lúc nào.</em></p>
+<blockquote>
 <p><strong>Tài liệu tham khảo:</strong> <a href="https://aws.amazon.com/redshift/features/data-sharing/">Chia sẻ dữ liệu trên AWS Redshift</a></p>
-<p><strong>4.3 Xác định không gian tên (namespace):</strong></p>
+</blockquote>
+<h3 id="43-xác-định-không-gian-tên-namespace"><strong>4.3 Xác định không gian tên (namespace):</strong></h3>
 <p>Chúng ta sẽ chạy các câu lệnh SQL đơn giản để tìm không gian tên cho cả cụm (cluster) nhà sản xuất và cụm nhà tiêu dùng. Những giá trị này sẽ được sử dụng trong các hướng dẫn tiếp theo.</p>
+<blockquote>
 <p><strong>Lưu ý:</strong> Không gian tên là một định danh duy nhất toàn cầu (GUID) được tự động tạo ra trong quá trình tạo cụm Amazon Redshift và được gắn liền với cụm đó. Nó được sử dụng để tham chiếu duy nhất tới cụm Redshift.</p>
+</blockquote>
 <p>Chạy lệnh sau trong trình chỉnh sửa truy vấn kết nối với endpoint serverless (producer - Serverless: workgroup-xxxxxxx). Ghi lại không gian tên từ kết quả đầu ra. Đảm bảo rằng trình chỉnh sửa kết nối với cluster sản xuất.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">producer</span> 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">current_namespace</span>;
@@ -487,7 +506,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">should</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">consumer</span> 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">current_namespace</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-012.png"></p>
-<p><strong>4.4 Tạo data share trên máy chủ sản xuất (producer)</strong></p>
+<h3 id="44-tạo-data-share-trên-máy-chủ-sản-xuất-producer"><strong>4.4 Tạo data share trên máy chủ sản xuất (producer)</strong></h3>
 <p>Chạy các lệnh sau khi kết nối với endpoint serverless (producer - Serverless: workgroup-xxxxxxx) để tạo một data share và thêm bảng <code>customer</code> vào data share.</p>
 <p>Thay thế <code>&lt;&lt;consumer namespace&gt;&gt;</code> bằng không gian tên của cluster tiêu thụ mà bạn đã ghi lại ở đầu bài lab này.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Creating</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">datashare</span>
@@ -506,9 +525,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Granting</span> <span style="color:#a6e22e">access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">consumer</span> <span style="color:#a6e22e">cluster</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">Grant</span> <span style="color:#a6e22e">USAGE</span> <span style="color:#a6e22e">ON</span> <span style="color:#a6e22e">DATASHARE</span> <span style="color:#a6e22e">cust_share</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">NAMESPACE</span> <span style="color:#e6db74">&#39;&lt;&lt;consumer namespace&gt;&gt;&#39;</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-04.png"></p>
-<p><strong>4.5 Truy vấn dữ liệu từ máy chủ tiêu thụ (consumer)</strong></p>
+<h3 id="45-truy-vấn-dữ-liệu-từ-máy-chủ-tiêu-thụ-consumer"><strong>4.5 Truy vấn dữ liệu từ máy chủ tiêu thụ (consumer)</strong></h3>
 <p>Vui lòng chạy các lệnh sau trên cluster được cung cấp (consumer - consumercluster-xxxxxxxxxx) để tạo một cơ sở dữ liệu cục bộ trên dữ liệu chia sẻ.</p>
+<blockquote>
 <p><strong>LƯU Ý:</strong> Thay thế <code>&lt;&lt;producer namespace&gt;&gt;</code> bằng không gian tên của cluster sản xuất mà bạn đã ghi lại ở đầu bài lab này.</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">View</span> <span style="color:#a6e22e">shared</span> <span style="color:#a6e22e">objects</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">datashares</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SVV_DATASHARE_OBJECTS</span>;
@@ -519,7 +540,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">query</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">count</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cust_db</span>.<span style="color:#66d9ef">public</span>.<span style="color:#a6e22e">customer</span>; <span style="color:#f92672">--</span> <span style="color:#a6e22e">count</span> <span style="color:#ae81ff">15000000</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-05.png"></p>
-<p>####[TÙY CHỌN]</p>
+<h3 id="tùy-chọn">[TÙY CHỌN]</h3>
 <p><strong>- Tạo external schema trong consumer</strong></p>
 <p>Chạy lệnh sau đây trong cụm consumer đã được cung cấp (consumer - consumercluster-xxxxxxxxxx) sẽ tạo một external schema có tên là cust_db_public trong cơ sở dữ liệu dev của consumer. Điều này rất hữu ích khi bạn cần tất cả dữ liệu của mình có sẵn trong một cơ sở dữ liệu duy nhất, giúp đơn giản hóa các câu lệnh SQL bằng cách sử dụng cú pháp hai chấm thay vì ba chấm (như được minh họa trong bước tiếp theo). Bước này cũng cần thiết khi sử dụng một số công cụ BI để cho phép làm mới đúng metadata trong giao diện người dùng của chúng. Việc tạo external schema bằng cách sử dụng đối tượng datashare cũng có thể đơn giản hóa quá trình phân tách khối lượng công việc sang các cụm chia sẻ dữ liệu. Bằng cách tạo các external schema trong cụm consumer với cùng tên như trong producer, các truy vấn công việc có thể được chuyển sang cụm consumer mà không cần thay đổi gì.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">local</span> <span style="color:#a6e22e">schema</span>
@@ -531,7 +552,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">query</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">check</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">count</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">cust_db_public</span>.<span style="color:#a6e22e">customer</span>; <span style="color:#f92672">--</span> <span style="color:#a6e22e">count</span> <span style="color:#ae81ff">15000000</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/4/4-6.png"></p>
+<blockquote>
 <p><strong>Lưu ý:</strong> Bạn sẽ nhận được kết quả tương tự như bước trước, nhưng câu lệnh select sẽ sử dụng external schema mới.</p>
+</blockquote>
 <p><strong>- Tải dữ liệu cục bộ và kết hợp với dữ liệu được chia sẻ</strong></p>
 <p>Chạy các lệnh sau trong một tab trình chỉnh sửa truy vấn thuộc cụm đã được cung cấp (consumer - consumercluster-xxxxxxxxxx). Các lệnh sau được sử dụng để tạo và tải dữ liệu bảng orders, sau đó sẽ được kết hợp với dữ liệu khách hàng được chia sẻ từ endpoint của producer.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">orders</span> <span style="color:#a6e22e">table</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">provisioned</span> <span style="color:#a6e22e">cluster</span> (<span style="color:#a6e22e">consumer</span>).
@@ -759,19 +782,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,21 +12,21 @@
     <title>Operations :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -433,7 +433,21 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#7-operations"><strong>7. Operations</strong></a></li>
+        <li><a href="#contents"><strong>Contents</strong></a></li>
+        <li><a href="#71-before-you-begin"><strong>7.1 Before you begin</strong></a></li>
+        <li><a href="#72-monitoring"><strong>7.2 Monitoring</strong></a></li>
+        <li><a href="#73-system-views"><strong>7.3 System Views</strong></a></li>
+        <li><a href="#74-audit-logging"><strong>7.4 Audit logging</strong></a></li>
+        <li><a href="#75-changing-rpus-and-setting-limits"><strong>7.5 Changing RPUs and Setting limits</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,9 +471,9 @@
 
 
 
-	<p><strong>7. Operations</strong></p>
+	<h3 id="7-operations"><strong>7. Operations</strong></h3>
 <p>In this lab, you will go through the monitoring (from both console and system views),audit logging features, changing base RPU setting and limits.</p>
-<p><strong>Contents</strong></p>
+<h3 id="contents"><strong>Contents</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Monitoring</li>
@@ -467,9 +481,9 @@
 <li>Audit logging</li>
 <li>Changing RPUs and setting limits</li>
 </ul>
-<p><strong>7.1 Before you begin</strong></p>
+<h3 id="71-before-you-begin"><strong>7.1 Before you begin</strong></h3>
 <p>This lab assumes that you have launched an <strong>Amazon Redshift Serverless</strong> endpoint. If you have not already done so, please see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Getting Started</a> and follow the instructions there. We will use <strong>Amazon Redshift <a href="https://console.aws.amazon.com/sqlworkbench/home">QueryEditorV2</a></strong> and the <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-dashboard"><strong>Amazon Redshift Serverless</strong></a>  for this lab.</p>
-<p><strong>7.2 Monitoring</strong></p>
+<h3 id="72-monitoring"><strong>7.2 Monitoring</strong></h3>
 <p>In this section, you will go through various monitoring options and set filters to experience the functionality. You will use the console to see query history, database performance and resource usage.</p>
 <p>Once you’re in the <strong>Redshift Serverless</strong> dashboard, navigate to <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-query-and-database-monitoring"><strong>Query and database monitoring</strong></a> on the left-hand side menu.</p>
 <ul>
@@ -529,7 +543,7 @@
 <li><strong>Compute usage</strong> - RPU seconds</li>
 </ul>
 <p><img alt="image.png" src="/images/7/7-010.png"></p>
-<p><strong>7.3 System Views</strong></p>
+<h3 id="73-system-views"><strong>7.3 System Views</strong></h3>
 <p>Below system views in <strong>Amazon Redshift Serverless</strong> are used to monitor query and workload usage. These views are located in the <strong>pg_catalog</strong> schema. These system views have been designed to give you the information needed to monitor Amazon Redshift Serverless, which are much simpler than various system views available for provisioned clusters.</p>
 <ul>
 <li>SYS_QUERY_HISTORY</li>
@@ -585,7 +599,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">sys_load_history</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">query_id</span> <span style="color:#a6e22e">DESC</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-13.png"></p>
-<p><strong>7.4 Audit logging</strong></p>
+<h3 id="74-audit-logging"><strong>7.4 Audit logging</strong></h3>
 <p>You can configure Amazon Redshift Serverless to export connection, user, and user-activity log data to a log group in Amazon CloudWatch Logs when creating workgroups</p>
 <p>The first step in the process is to make sure audit logging has been enabled for the workgroup.</p>
 <ul>
@@ -639,9 +653,11 @@
 <p>Select <strong>Dev</strong> database for your namespace to find out total number of tables as shown below. Please ensure you de-select all others to see a graph similar to below.</p>
 <p><img alt="image.png" src="/images/7/7-0024.png"></p>
 <p>You can also export the CloudWatch log groups events to S3. Please see below example screen.</p>
+<blockquote>
 <p><strong>NOTE</strong>: You may not be able to access this in lab environment. But you can try in your own environment.</p>
+</blockquote>
 <p><img alt="image.png" src="/images/7/7-025.png"></p>
-<p><strong>7.5 Changing RPUs and Setting limits</strong></p>
+<h3 id="75-changing-rpus-and-setting-limits"><strong>7.5 Changing RPUs and Setting limits</strong></h3>
 <ul>
 <li>Select your default workgroup, click on the <strong>Limits</strong> tab.</li>
 <li>Click on <strong>Edit</strong> in <strong>Base capacity in Redshift processing units (RPUs)</strong> section.</li>
@@ -878,19 +894,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390282"></script>
+    <script src="/js/jquery.sticky.js?1726390282"></script>
+    <script src="/js/featherlight.min.js?1726390282"></script>
+    <script src="/js/highlight.pack.js?1726390282"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390282"></script>
+    <script src="/js/learn.js?1726390282"></script>
+    <script src="/js/hugo-learn.js?1726390282"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390282" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390282"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

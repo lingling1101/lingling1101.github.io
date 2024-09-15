@@ -12,21 +12,21 @@
     <title>Ongoing Load - ELT :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -433,7 +433,24 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#3-ongoing-load---elt"><strong>3. Ongoing Load - ELT</strong></a></li>
+        <li><a href="#contents"><strong>Contents</strong></a></li>
+        <li><a href="#31-before-you-begin"><strong>3.1 Before you begin</strong></a></li>
+        <li><a href="#32-stored-procedures---ongoing-loads"><strong>3.2 Stored Procedures - Ongoing loads</strong></a></li>
+        <li><a href="#33-stored-procedures---exception-handling"><strong>3.3 Stored Procedures - Exception Handling</strong></a></li>
+        <li><a href="#34-atomic"><strong>3.4 Atomic</strong></a></li>
+        <li><a href="#35-non-atomic"><strong>3.5 Non-atomic</strong></a></li>
+        <li><a href="#36-materialized-views"><strong>3.6 Materialized Views</strong></a></li>
+        <li><a href="#37-bringing-it-together"><strong>3.7 Bringing it together</strong></a></li>
+        <li><a href="#38-user-defined-functions"><strong>3.8 User Defined Functions</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,8 +474,8 @@
 
 
 
-	<p><strong>3. Ongoing Load - ELT</strong></p>
-<p><strong>Contents</strong></p>
+	<h3 id="3-ongoing-load---elt"><strong>3. Ongoing Load - ELT</strong></h3>
+<h3 id="contents"><strong>Contents</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Stored procedures - Ongoing loads</li>
@@ -467,13 +484,13 @@
 <li>User defined functions</li>
 <li>Before you leave</li>
 </ul>
-<p><strong>3.1 Before you begin</strong></p>
+<h3 id="31-before-you-begin"><strong>3.1 Before you begin</strong></h3>
 <p>This lab assumes that you have launched an Amazon Redshift Serverless endpoint. If you have not already done so, please see Getting Started and follow the instructions there. We will use Amazon Redshift QueryEditorV2  for this lab.</p>
 <p>With ETL, data transformation happens in a middle-tier ETL server before loading it on the Data Warehouse. The following diagram illustrates the ETL workflow:</p>
 <p><img alt="image.png" src="/images/3/3-1.png"></p>
 <p>With ELT, data transformation happens in the target data warehouse rather than requiring a middle-tier ETL server. This approach takes advantage of Redshift database engines that support massively parallel processing (MPP). The following diagram illustrates the ELT workflow:</p>
 <p><img alt="image.png" src="/images/3/3-2.png"></p>
-<p><strong>3.2 Stored Procedures - Ongoing loads</strong></p>
+<h3 id="32-stored-procedures---ongoing-loads"><strong>3.2 Stored Procedures - Ongoing loads</strong></h3>
 <p>Stored procedures are commonly used to encapsulate logic for data transformation, data validation, and business-specific logic. By combining multiple SQL steps into a stored procedure, you can reduce round trips between your applications and the database. A stored procedure can incorporate data definition language (DDL) and data manipulation language (DML) in addition to SELECT queries. A stored procedure doesn’t have to return a value. You can use the PL/pgSQL procedural language, including looping and conditional expressions, to control logical flow.</p>
 <p>Let’s see how you can create and invoke stored procedure in Redshift. Here our goal is to incrementally refresh the lineitem data. Execute the following query to create lineitem staging table:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">table</span> <span style="color:#a6e22e">stage_lineitem</span> (
@@ -537,7 +554,7 @@
 <p>After you call this stored procedure, verify total #rows from lineitem table has changed</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">FROM</span> <span style="color:#e6db74">&#34;dev&#34;</span>.<span style="color:#e6db74">&#34;public&#34;</span>.<span style="color:#e6db74">&#34;lineitem&#34;</span>; <span style="color:#f92672">--</span><span style="color:#ae81ff">306008217</span>
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-7.png"></p>
-<p><strong>3.3 Stored Procedures - Exception Handling</strong></p>
+<h3 id="33-stored-procedures---exception-handling"><strong>3.3 Stored Procedures - Exception Handling</strong></h3>
 <p>This next section covers exception handling within stored procedures. Stored procedures support exception handling in the following format:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">Example</span> <span style="color:#a6e22e">pseudocode</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>
@@ -552,7 +569,9 @@
 <li><strong>Atomic (default):</strong> exceptions (errors) are always re-raised</li>
 <li><strong>Non-atomic:</strong> exceptions are handled and you can choose to re-raise or not</li>
 </ul>
+<blockquote>
 <p><strong>Note:</strong> When calling a stored procedure from another, the stored procedures must have matching transaction modes or else you will see the following error: Stored procedure created in one transaction mode cannot be invoked from another procedure in a different transaction mode</p>
+</blockquote>
 <p>To get started, we need to first create a table for the stored procedures in this section.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">stage_lineitem2</span> (<span style="color:#a6e22e">LIKE</span> <span style="color:#a6e22e">stage_lineitem</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-88.png"></p>
@@ -560,7 +579,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">procedure_log</span>
 </span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">log_timestamp</span> <span style="color:#a6e22e">timestamp</span>, <span style="color:#a6e22e">procedure_name</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">100</span>), <span style="color:#a6e22e">error_message</span> <span style="color:#a6e22e">varchar</span>(<span style="color:#ae81ff">255</span>));
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-99.png"></p>
-<p><strong>3.4 Atomic</strong></p>
+<h3 id="34-atomic"><strong>3.4 Atomic</strong></h3>
 <p>Stored procedures in Redshift are atomic by default which means you have transaction control for the statements in the procedure. If you choose to not include COMMIT or ROLLBACK in the stored procedure, then all statements are handled in a single transaction. It is important to know that in the default atomic mode, exceptions are always re-raised.</p>
 <pre tabindex="0"><code>COMMIT
 </code></pre><p>or</p>
@@ -611,7 +630,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">procedure_log</span> <span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">log_timestamp</span> <span style="color:#a6e22e">DESC</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-014.png"></p>
 <p>You should see that the pr_divide_by_zero procedure error was captured in the exception block.</p>
-<p><strong>3.5 Non-atomic</strong></p>
+<h3 id="35-non-atomic"><strong>3.5 Non-atomic</strong></h3>
 <p>Stored procedures can also be created with the <code>NONATOMIC</code> option which will automatically <code>COMMIT</code> after each statement. When an ERROR exception happens in a stored procedure, the exception is not always re-raised. Instead, you can choose to &ldquo;handle&rdquo; the error and continue subsequent statements in the stored procedure.</p>
 <p>The following stored procedures are identical to the atomic versions except each now includes the <code>NONATOMIC</code> option. This mode automatically commits the statements inside the procedure and doesn&rsquo;t automatically re-raise errors.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">OR</span> <span style="color:#a6e22e">REPLACE</span> <span style="color:#a6e22e">PROCEDURE</span> <span style="color:#a6e22e">pr_divide_by_zero_v2</span>() <span style="color:#a6e22e">NONATOMIC</span> <span style="color:#a6e22e">AS</span>
@@ -656,7 +675,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">procedure_log</span> <span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">log_timestamp</span> <span style="color:#a6e22e">DESC</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-018.png"></p>
 <p>You should see that the pr_divide_by_zero_v2 procedure error was captured in the exception block just like in the atomic version.</p>
-<p><strong>3.6 Materialized Views</strong></p>
+<h3 id="36-materialized-views"><strong>3.6 Materialized Views</strong></h3>
 <p>In a data warehouse environment, applications often need to perform complex queries on large tables—for example, SELECT statements that perform multi-table joins and aggregations on the tables that contain billions of rows. Processing these queries can be expensive in terms of system resources and the time it takes to compute the results.</p>
 <p>Materialized views in Amazon Redshift provide a way to address these issues. A materialized view contains a precomputed result set, based on SQL query over one or more base tables. Here you will learn how to create, query and refresh a materialized view.</p>
 <p>Let’s take an example where you want to generate a report of the top suppliers by shipped quantity. This will join large tables like and <code>lineitem</code>, and <code>suppliers</code> and scan a large quantity of data. You might write a query like the following:</p>
@@ -720,7 +739,7 @@
 <blockquote>
 <p>Write additional queries which can leverage your materialized view but which do not directly reference it. For example, Total Extendedprice by Region.</p>
 </blockquote>
-<p><strong>3.7 Bringing it together</strong></p>
+<h3 id="37-bringing-it-together"><strong>3.7 Bringing it together</strong></h3>
 <p>Let’s see if Redshift is automatically refresh materialized view after lineitem table Data Changes.</p>
 <p>Please capture a metric using the materialized view. We&rsquo;ll compare this value after base table data changes.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">SUM</span>(<span style="color:#a6e22e">TOTAL_QTY</span>) <span style="color:#a6e22e">Total_Qty</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">supplier_shipmode_agg</span>;
@@ -732,10 +751,12 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#a6e22e">datepart</span>(<span style="color:#a6e22e">year</span>, <span style="color:#a6e22e">o_orderdate</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1998</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">datepart</span>(<span style="color:#a6e22e">month</span>, <span style="color:#a6e22e">o_orderdate</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-25.png"></p>
 <p>Run the below queries on the MV and compare with the value you had noted previously. You will see SUM has changed which indicates that Redshift has identified changes that have taken place in the base table or tables, and then applied those changes to the materialized view.</p>
+<blockquote>
 <p><strong>Notion:</strong> the materialized view refresh is asynchronous. For this lab, expect ~5min for the data to be refreshed after you called the <code>lineitem_incremental</code> procedure:</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">SUM</span>(<span style="color:#a6e22e">TOTAL_QTY</span>) <span style="color:#a6e22e">Total_Qty</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">supplier_shipmode_agg</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/3/3-26.png"></p>
-<p><strong>3.8 User Defined Functions</strong></p>
+<h3 id="38-user-defined-functions"><strong>3.8 User Defined Functions</strong></h3>
 <p>Redshift supports scalar user-defined function (UDF) using either a SQL SELECT clause or a Python program. The following example creates a Python function that compares two numbers and returns the larger value:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">create</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f_py_greater</span> (<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">float</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">float</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">returns</span> <span style="color:#66d9ef">float</span>
@@ -953,19 +974,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

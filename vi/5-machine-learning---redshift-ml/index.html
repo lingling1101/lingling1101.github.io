@@ -12,21 +12,21 @@
     <title>Học máy - Redshift ML :: LÀM VIỆC VỚI AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390283" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390283" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390283" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390283" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390283" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390283" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390283" rel="stylesheet">
+    <link href="/css/theme.css?1726390283" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390283" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390283" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390283"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390283"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390283"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390283"></script>
 
     
   </div>
@@ -433,7 +433,21 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#5-học-máy---redshift-ml"><strong>5. Học máy - Redshift ML</strong></a></li>
+        <li><a href="#nội-dung"><strong>Nội dung</strong></a></li>
+        <li><a href="#51-trước-khi-bắt-đầu"><strong>5.1 Trước khi bắt đầu</strong></a></li>
+        <li><a href="#52-chuẩn-bị-dữ-liệu"><strong>5.2 Chuẩn bị dữ liệu</strong></a></li>
+        <li><a href="#53-tạo-mô-hình"><strong>5.3 Tạo mô hình</strong></a></li>
+        <li><a href="#54-kiểm-tra-độ-chính-xác-và-chạy-truy-vấn-suy-luận"><strong>5.4 Kiểm tra độ chính xác và chạy truy vấn suy luận</strong></a></li>
+        <li><a href="#55-giải-thích-mô-hình"><strong>5.5 Giải thích mô hình</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,9 +471,9 @@
 
 
 
-	<p><strong>5. Học máy - Redshift ML</strong></p>
+	<h3 id="5-học-máy---redshift-ml"><strong>5. Học máy - Redshift ML</strong></h3>
 <p>Trong bài lab này, bạn sẽ tạo một mô hình sử dụng Redshift ML Auto.</p>
-<p><strong>Nội dung</strong></p>
+<h3 id="nội-dung"><strong>Nội dung</strong></h3>
 <ul>
 <li>Trước khi bắt đầu</li>
 <li>Chuẩn bị dữ liệu</li>
@@ -468,9 +482,9 @@
 <li>Giải thích</li>
 <li>Trước khi rời khỏi</li>
 </ul>
-<p><strong>5.1 Trước khi bắt đầu</strong></p>
+<h3 id="51-trước-khi-bắt-đầu"><strong>5.1 Trước khi bắt đầu</strong></h3>
 <p>Hướng dẫn này giả định rằng bạn đã khởi chạy một Amazon Redshift Serverless endpoint. Nếu bạn chưa làm như vậy, vui lòng xem phần <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1"><strong>Hướng dẫn bắt đầu</strong></a> và làm theo các hướng dẫn tại đó. Chúng tôi sẽ sử dụng <a href="https://console.aws.amazon.com/sqlworkbench/home">Amazon Redshift QueryEditorV2</a> cho bài lab này.</p>
-<p><strong>5.2 Chuẩn bị dữ liệu</strong></p>
+<h3 id="52-chuẩn-bị-dữ-liệu"><strong>5.2 Chuẩn bị dữ liệu</strong></h3>
 <p>Tập dữ liệu Marketing Ngân hàng chứa các chiến dịch tiếp thị trực tiếp của một tổ chức ngân hàng Bồ Đào Nha. Các chiến dịch tiếp thị dựa trên các cuộc gọi điện thoại. Thường thì cần phải liên hệ nhiều lần với cùng một khách hàng để đánh giá xem sản phẩm (tiền gửi ngân hàng) có được đăng ký (&lsquo;yes&rsquo;) hay không (&rsquo;no&rsquo;).</p>
 <p>Tập dữ liệu bao gồm các thuộc tính sau. Mục tiêu phân loại là dự đoán xem khách hàng có đăng ký vào tiền gửi kỳ hạn hay không.</p>
 <p><strong>Các thuộc tính của dữ liệu khách hàng ngân hàng</strong></p>
@@ -496,7 +510,9 @@
 <li>euribor3m</li>
 <li>nr.employed</li>
 </ul>
+<blockquote>
 <p><strong>Tài liệu tham khảo:</strong> <a href="https://archive.ics.uci.edu/ml/datasets/bank+marketing">Tập dữ liệu marketing ngân hàng</a></p>
+</blockquote>
 <p>Thực hiện các lệnh sau để tạo và tải bảng huấn luyện vào Redshift. Lưu ý trường bổ sung <code>y</code>, chứa giá trị &lsquo;yes&rsquo; hoặc &rsquo;no&rsquo; chỉ kết quả của việc đăng ký tiền gửi kỳ hạn. Dữ liệu huấn luyện sẽ được tải với dữ liệu lịch sử và được sử dụng để tạo mô hình.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">bank_details_training</span>(
 </span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">age</span> <span style="color:#a6e22e">numeric</span>,
@@ -553,7 +569,7 @@
 <p>Trước khi bạn tạo một mô hình, bạn cần tạo một bucket S3 để lưu trữ các kết quả trung gian. Truy cập vào S3 và tạo một bucket với tên <code>testanalytics</code> kết thúc bằng tên của bạn, một số ngẫu nhiên hoặc số tài khoản của bạn để có một tên duy nhất. Bạn có thể tìm số tài khoản của mình ở góc trên bên phải của bảng điều khiển quản lý. Mục đích là để tạo một bucket S3 với tên duy nhất.</p>
 <p><img alt="image.png" src="/images/5/5-3.png"></p>
 <p><img alt="image.png" src="/images/5/5-04.png"></p>
-<p><strong>5.3 Tạo mô hình</strong></p>
+<h3 id="53-tạo-mô-hình"><strong>5.3 Tạo mô hình</strong></h3>
 <p>Hoàn thành Autopilot được tạo ra với ít đầu vào từ người dùng. Đây sẽ là một bài toán phân loại nhị phân, nhưng Autopilot sẽ chọn thuật toán phù hợp dựa trên dữ liệu và đầu vào.</p>
 <p>Thực hiện lệnh sau để tạo mô hình. Thay thế <code>&lt;&lt;S3 bucket&gt;&gt;</code> bằng tên bucket mà bạn đã tạo ở trên.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>
@@ -600,7 +616,7 @@
 <blockquote>
 <p>Vì quá trình đào tạo mất khoảng 60 phút, bạn có thể chuyển sang phòng thí nghiệm tiếp theo hoặc bài thuyết trình. Vui lòng quay lại sau một giờ và thực hiện các bước còn lại.</p>
 </blockquote>
-<p><strong>5.4 Kiểm tra độ chính xác và chạy truy vấn suy luận</strong></p>
+<h3 id="54-kiểm-tra-độ-chính-xác-và-chạy-truy-vấn-suy-luận"><strong>5.4 Kiểm tra độ chính xác và chạy truy vấn suy luận</strong></h3>
 <p>Hy vọng rằng bạn đã cho mô hình đủ thời gian (~60 phút) để hoàn tất quá trình đào tạo. Chạy cùng một câu lệnh SQL như trên để kiểm tra trạng thái của mô hình. Trạng thái của mô hình nên là &lsquo;Ready&rsquo; để bạn có thể tiếp tục. Chú ý đến điểm số validation- nó sẽ nằm trong khoảng từ 0 đến 1, càng gần 1 thì mô hình càng tốt.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">model</span> <span style="color:#a6e22e">model_bank_marketing</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-07.png"></p>
@@ -632,7 +648,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">term_data</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>;.
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-8.png"></p>
 <p><img alt="image.png" src="/images/5/5-9.png"></p>
-<p><strong>5.5 Giải thích mô hình</strong></p>
+<h3 id="55-giải-thích-mô-hình"><strong>5.5 Giải thích mô hình</strong></h3>
 <p>Bạn có thể xác định các thuộc tính nào đang đóng góp tích cực cho dự đoán và mức độ đóng góp của chúng bằng cách tạo báo cáo giải thích mô hình. Vui lòng chạy lệnh sau để xem giải thích mô hình:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">explain_model</span>(<span style="color:#e6db74">&#39;model_bank_marketing&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-010.png"></p>
@@ -829,19 +845,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

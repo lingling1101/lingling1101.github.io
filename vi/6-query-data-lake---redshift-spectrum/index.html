@@ -12,21 +12,21 @@
     <title>Truy vấn Data Lake - Redshift Spectrum :: LÀM VIỆC VỚI AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390283" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390283" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390283" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390283" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390283" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390283" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390283" rel="stylesheet">
+    <link href="/css/theme.css?1726390283" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390283" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390283" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390283"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390283"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390283"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390283"></script>
 
     
   </div>
@@ -433,7 +433,25 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#6-truy-vấn-data-lake---redshift-spectrum"><strong>6. Truy vấn Data Lake - Redshift Spectrum</strong></a></li>
+        <li><a href="#nội-dung"><strong>Nội dung</strong></a></li>
+        <li><a href="#61-trước-khi-bắt-đầu"><strong>6.1 Trước khi bắt đầu</strong></a></li>
+        <li><a href="#62-mô-tả-trường-hợp-sử-dụng"><strong>6.2 Mô tả trường hợp sử dụng</strong></a></li>
+        <li><a href="#63-hướng-dẫn"><strong>6.3 Hướng dẫn</strong></a></li>
+        <li><a href="#1-tạo-và-chạy-glue-crawler-để-điền-vào-glue-data-catalog"><strong>1. Tạo và chạy Glue crawler để điền vào Glue data catalog</strong></a></li>
+        <li><a href="#2-tạo-lược-đồ-ngoài-adb305-trong-redshift-và-truy-vấn-từ-bảng-trong-glue-catalog---ny_pub"><strong>2. Tạo lược đồ ngoài adb305 trong Redshift và truy vấn từ bảng trong Glue catalog - ny_pub</strong></a></li>
+        <li><a href="#3-tạo-lược-đồ-nội-bộ-workshop_das"><strong>3. Tạo lược đồ nội bộ workshop_das</strong></a></li>
+        <li><a href="#4-chạy-ctas-để-tạo-và-tải-bảng-redshift-workshop_dastaxi_201601-bằng-cách-chọn-từ-bảng-ngoài"><strong>4. Chạy CTAS để tạo và tải bảng Redshift workshop_das.taxi_201601 bằng cách chọn từ bảng ngoài</strong></a></li>
+        <li><a href="#5-xóa-các-phân-vùng-201601-khỏi-bảng-ngoài"><strong>5. Xóa các phân vùng 201601 khỏi bảng ngoài</strong></a></li>
+        <li><a href="#6-tạo-view-kết-hợp-publicadb305_view_ny_taxirides"><strong>6. Tạo view kết hợp public.adb305_view_NY_TaxiRides</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,23 +475,23 @@
 
 
 
-	<p><strong>6. Truy vấn Data Lake - Redshift Spectrum</strong></p>
+	<h3 id="6-truy-vấn-data-lake---redshift-spectrum"><strong>6. Truy vấn Data Lake - Redshift Spectrum</strong></h3>
 <p>Trong bài thực hành này, chúng tôi sẽ hướng dẫn bạn cách truy vấn dữ liệu trong Amazon S3 Data Lake bằng Amazon Redshift mà không cần tải hoặc di chuyển dữ liệu. Chúng tôi cũng sẽ trình bày cách bạn có thể sử dụng các view để kết hợp dữ liệu trong Redshift Managed storage với dữ liệu trong S3. Bạn có thể truy vấn dữ liệu có cấu trúc và bán cấu trúc từ các tệp trong Amazon S3 mà không cần sao chép hoặc di chuyển dữ liệu vào các bảng của Amazon Redshift.</p>
 <p><img alt="image.png" src="/images/6/6-001.png"></p>
-<p><strong>Nội dung</strong></p>
+<h3 id="nội-dung"><strong>Nội dung</strong></h3>
 <ul>
 <li>Trước khi bắt đầu</li>
 <li>Mô tả trường hợp sử dụng</li>
 <li>Hướng dẫn</li>
 <li>Trước khi kết thúc</li>
 </ul>
-<p><strong>6.1 Trước khi bắt đầu</strong></p>
+<h3 id="61-trước-khi-bắt-đầu"><strong>6.1 Trước khi bắt đầu</strong></h3>
 <p>Bài thực hành này giả định rằng bạn đã khởi tạo một Redshift Serverless Warehouse. Nếu bạn chưa tạo Redshift Serverless Warehouse, hãy xem phần <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Bắt Đầu</a>. Chúng tôi sẽ sử dụng Redshift Query Editor V2 trong bảng điều khiển Redshift cho bài thực hành này.</p>
 <p>Vui lòng tìm khu vực của bạn bằng cách làm theo hình ảnh bên dưới và chọn bộ dữ liệu s3 theo hướng dẫn cho khu vực của bạn.</p>
 <blockquote>
 <p>Phòng thí nghiệm này yêu cầu không gian tên Redshift Serverless trong các vùng us-east-1(N. Virginia) hoặc us-west-2(Oregon) hoặc eu-west-1(Ireland) hoặc ap-northeast-1(Tokyo) vì dữ liệu trong s3 nằm ở bốn vùng này.</p>
 </blockquote>
-<p><strong>6.2 Mô tả trường hợp sử dụng</strong></p>
+<h3 id="62-mô-tả-trường-hợp-sử-dụng"><strong>6.2 Mô tả trường hợp sử dụng</strong></h3>
 <p><strong>Mục tiêu</strong>: Rút ra những thông tin dữ liệu để thể hiện tác động của trận bão tuyết đến số lượng chuyến xe taxi vào tháng 1 năm 2016.</p>
 <p><strong>Mô tả tập dữ liệu</strong>: Dữ liệu chuyến đi taxi tại thành phố New York bao gồm số lượng chuyến đi taxi theo năm và tháng cho 3 công ty taxi khác nhau - fhv, green, và yellow.</p>
 <p><strong>Vị trí tập dữ liệu trên S3</strong>:</p>
@@ -485,8 +503,8 @@
 </ul>
 <p>Dưới đây là tổng quan về các bước trong trường hợp sử dụng này liên quan đến bài thực hành.
 <img alt="image.png" src="/images/6/6-2.png"></p>
-<p><strong>6.3 Hướng dẫn</strong></p>
-<p><strong>1. Tạo và chạy Glue crawler để điền vào Glue data catalog</strong></p>
+<h3 id="63-hướng-dẫn"><strong>6.3 Hướng dẫn</strong></h3>
+<h3 id="1-tạo-và-chạy-glue-crawler-để-điền-vào-glue-data-catalog"><strong>1. Tạo và chạy Glue crawler để điền vào Glue data catalog</strong></h3>
 <p>Trong phần này của bài thực hành, chúng ta sẽ thực hiện các hoạt động sau:</p>
 <ul>
 <li>Truy vấn dữ liệu lịch sử lưu trữ trên S3 bằng cách tạo một cơ sở dữ liệu (DB) ngoài cho Redshift Spectrum.</li>
@@ -539,7 +557,7 @@
 <p><img alt="image.png" src="/images/6/6-14.png"></p>
 <p><strong>+</strong> Sau khi quá trình chạy crawler hoàn tất, bạn có thể thấy một bảng mới <strong>ny_pub</strong> trong <strong>Glue Catalog</strong>.</p>
 <p><img alt="image.png" src="/images/6/6-015.png"></p>
-<p><strong>2. Tạo lược đồ ngoài adb305 trong Redshift và truy vấn từ bảng trong Glue catalog - ny_pub</strong></p>
+<h3 id="2-tạo-lược-đồ-ngoài-adb305-trong-redshift-và-truy-vấn-từ-bảng-trong-glue-catalog---ny_pub"><strong>2. Tạo lược đồ ngoài adb305 trong Redshift và truy vấn từ bảng trong Glue catalog - ny_pub</strong></h3>
 <p><strong>+</strong> Đi đến <strong>Redshift console</strong>:</p>
 <ul>
 <li>Khu vực <strong>us-east-1</strong> - <a href="https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#/serverless-setup">https://us-east-1.console.aws.amazon.com/redshiftv2/home?region=us-east-1#/serverless-setup</a></li>
@@ -565,18 +583,20 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">2</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-18.png"></p>
-<p><strong>3. Tạo lược đồ nội bộ workshop_das</strong></p>
+<h3 id="3-tạo-lược-đồ-nội-bộ-workshop_das"><strong>3. Tạo lược đồ nội bộ workshop_das</strong></h3>
 <p>Tạo một lược đồ <strong>workshop_das</strong> cho các bảng sẽ được lưu trữ trên <strong>Redshift Managed Storage</strong>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">SCHEMA</span> <span style="color:#a6e22e">workshop_das</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-19.png"></p>
-<p><strong>4. Chạy CTAS để tạo và tải bảng Redshift workshop_das.taxi_201601 bằng cách chọn từ bảng ngoài</strong></p>
+<h3 id="4-chạy-ctas-để-tạo-và-tải-bảng-redshift-workshop_dastaxi_201601-bằng-cách-chọn-từ-bảng-ngoài"><strong>4. Chạy CTAS để tạo và tải bảng Redshift workshop_das.taxi_201601 bằng cách chọn từ bảng ngoài</strong></h3>
 <p>Tạo bảng <strong>workshop_das.taxi_201601</strong> để tải dữ liệu cho công ty taxi <strong>green</strong> vào tháng 1 năm 2016</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span> <span style="color:#a6e22e">AS</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;green&#39;</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-20.png"></p>
+<blockquote>
 <p><strong>Lưu ý</strong>: Còn về nén/ mã hóa cột thì sao? Hãy nhớ rằng trên một CTAS, Amazon Redshift tự động chỉ định mã hóa nén như sau:</p>
+</blockquote>
 <ul>
 <li>Các cột được định nghĩa là khóa sắp xếp được chỉ định mã hóa RAW.</li>
 <li>Các cột được định nghĩa là BOOLEAN, REAL, DOUBLE PRECISION, hoặc GEOMETRY được chỉ định mã hóa RAW.</li>
@@ -594,13 +614,13 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;green&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-22.png"></p>
-<p><strong>5. Xóa các phân vùng 201601 khỏi bảng ngoài</strong></p>
+<h3 id="5-xóa-các-phân-vùng-201601-khỏi-bảng-ngoài"><strong>5. Xóa các phân vùng 201601 khỏi bảng ngoài</strong></h3>
 <p>Bây giờ chúng ta đã tải xong dữ liệu của tháng 1 năm 2016, chúng ta có thể xóa các phân vùng khỏi bảng Spectrum để không có sự trùng lặp giữa bảng <strong>Redshift Managed Storage (RMS)</strong> và bảng <strong>Spectrum</strong>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fhv&#39;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;green&#39;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yellow&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-23.png"></p>
-<p><strong>6. Tạo view kết hợp public.adb305_view_NY_TaxiRides</strong></p>
+<h3 id="6-tạo-view-kết-hợp-publicadb305_view_ny_taxirides"><strong>6. Tạo view kết hợp public.adb305_view_NY_TaxiRides</strong></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">VIEW</span> <span style="color:#a6e22e">adb305_view_NYTaxiRides</span> <span style="color:#a6e22e">AS</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UNION</span> <span style="color:#a6e22e">ALL</span>
@@ -814,19 +834,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

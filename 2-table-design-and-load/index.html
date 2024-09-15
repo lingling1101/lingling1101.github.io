@@ -12,21 +12,21 @@
     <title>Table Design and Load :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -433,7 +433,22 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#2-table-design-and-load"><strong>2. Table Design and Load</strong></a></li>
+        <li><a href="#contents"><strong>Contents:</strong></a></li>
+        <li><a href="#21-before-you-begin"><strong>2.1 Before you begin</strong></a></li>
+        <li><a href="#22-create-tables"><strong>2.2 Create Tables</strong></a></li>
+        <li><a href="#23-data-loading"><strong>2.3 Data Loading</strong></a></li>
+        <li><a href="#24-load-validation"><strong>2.4 Load Validation</strong></a></li>
+        <li><a href="#25-troubleshooting-loads"><strong>2.5 Troubleshooting Loads</strong></a></li>
+        <li><a href="#26-automatic-table-maintenance---analyze-and-vacuum"><strong>2.6 Automatic Table Maintenance - ANALYZE and VACUUM</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,8 +472,8 @@
 
 
 
-	<p><strong>2. Table Design and Load</strong></p>
-<p><strong>Contents:</strong></p>
+	<h3 id="2-table-design-and-load"><strong>2. Table Design and Load</strong></h3>
+<h3 id="contents"><strong>Contents:</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Create tables</li>
@@ -467,9 +482,9 @@
 <li>Automatic table maintenance - ANALYZE and VACUUM</li>
 <li>Before you leave</li>
 </ul>
-<p><strong>2.1 Before you begin</strong></p>
+<h3 id="21-before-you-begin"><strong>2.1 Before you begin</strong></h3>
 <p>This lab assumes that you have launched an Amazon Redshift Serverless endpoint. If you have not already done so, please see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Getting Started</a> and follow the instructions there. We will use Amazon Redshift <a href="https://ap-southeast-2.console.aws.amazon.com/sqlworkbench/home?region=ap-southeast-2#/account/configuration">QueryEditorV2</a> for this lab.</p>
-<p><strong>2.2 Create Tables</strong></p>
+<h3 id="22-create-tables"><strong>2.2 Create Tables</strong></h3>
 <p>Amazon Redshift is an ANSI SQL compliant data warehouse. You can create tables using familiar <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_TABLE_NEW.html">CREATE TABLE</a> statements.</p>
 <p>To create 8 tables from TPC Benchmark data model, copy the following create table statements and run them. Given below is the data model for the tables.</p>
 <p><img alt="image.png" src="/images/2/2-1.png"></p>
@@ -570,7 +585,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">diststyle</span> <span style="color:#a6e22e">even</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-2.png"></p>
 <p><img alt="image.png" src="/images/2/2-33.png"></p>
-<p><strong>2.3 Data Loading</strong></p>
+<h3 id="23-data-loading"><strong>2.3 Data Loading</strong></h3>
 <p>In this lab, you will learn following approaches to load data into Redshift.</p>
 <ol>
 <li>Load data from S3 to Redshift. You will use this process for loading 7 tables out of 8 tables created in above step.</li>
@@ -622,7 +637,9 @@
 <li>LINEITEM - (303M rows) - 22s</li>
 <li>PARTSUPPLIER - (80M rows) - 15s</li>
 </ul>
+<blockquote>
 <p><strong>Note:</strong> A few key takeaways from the above COPY statements.</p>
+</blockquote>
 <ul>
 <li>
 <p><strong>COMPUPDATE PRESET ON</strong> will assign compression using the Amazon Redshift best practices related to the data type of the column but without analyzing the data in the table.</p>
@@ -668,7 +685,7 @@ The <em>Nation</em> table is already created in the <a href="https://catalog.us-
 </blockquote>
 <p><img alt="image.png" src="/images/2/2-91.png"></p>
 <p><img alt="image.png" src="/images/2/2-101.png"></p>
-<p><strong>2.4 Load Validation</strong></p>
+<h3 id="24-load-validation"><strong>2.4 Load Validation</strong></h3>
 <p>Let us do a quick check of counts on few tables to ensure data is loaded as expected. You can open a new editor and run below queries if the copy process is still loading some tables.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span> <span style="color:#f92672">--</span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">region</span>;
@@ -681,7 +698,7 @@ The <em>Nation</em> table is already created in the <a href="https://catalog.us-
 </span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-11.png"></p>
 <p><img alt="image.png" src="/images/2/2-12.png"></p>
 <p><img alt="image.png" src="/images/2/2-13.png"></p>
-<p><strong>2.5 Troubleshooting Loads</strong></p>
+<h3 id="25-troubleshooting-loads"><strong>2.5 Troubleshooting Loads</strong></h3>
 <p>To troubleshoot any data load issues, you can query <code>SYS_LOAD_ERROR_DETAIL</code>.</p>
 <p>In addition, you can validate your data without actually loading the table. You can use the <code>NOLOAD</code> option with the <code>COPY</code> command to make sure that your data will load without any errors before running the actual data load. Notice that running <code>COPY</code> with the <code>NOLOAD</code> option is much faster than loading the data since it only parses the files.</p>
 <p>Let’s try to load the <code>CUSTOMER</code> table with a different data file with mismatched columns.</p>
@@ -695,7 +712,7 @@ The <em>Nation</em> table is already created in the <a href="https://catalog.us-
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">select</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">SYS_LOAD_ERROR_DETAIL</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/2/2-15.png"></p>
 <p>Notice that there is one row for the column c_nationkey with datatype int with an error message &ldquo;Invalid digit, Value &lsquo;h&rsquo;, Pos 1&rdquo; indicating that you are trying to load character into an integer column.</p>
-<p><strong>2.6 Automatic Table Maintenance - ANALYZE and VACUUM</strong></p>
+<h3 id="26-automatic-table-maintenance---analyze-and-vacuum"><strong>2.6 Automatic Table Maintenance - ANALYZE and VACUUM</strong></h3>
 <ul>
 <li><strong>Analyze:</strong></li>
 </ul>
@@ -941,19 +958,19 @@ The <em>Nation</em> table is already created in the <a href="https://catalog.us-
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

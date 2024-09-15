@@ -12,21 +12,21 @@
     <title>Query Data Lake - Redshift Spectrum :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -433,7 +433,25 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#6-query-data-lake---redshift-spectrum"><strong>6. Query Data Lake - Redshift Spectrum</strong></a></li>
+        <li><a href="#contents"><strong>Contents</strong></a></li>
+        <li><a href="#61-before-you-begin"><strong>6.1 Before you begin</strong></a></li>
+        <li><a href="#62-use-case-description"><strong>6.2 Use-Case description</strong></a></li>
+        <li><a href="#63-instructions"><strong>6.3 Instructions</strong></a></li>
+        <li><a href="#1-create-and-run-glue-crawler-to-populate-glue-data-catalog"><strong>1. Create and run Glue crawler to populate Glue data catalog</strong></a></li>
+        <li><a href="#2-create-external-schema-adb305-in-redshift-and-select-from-glue-catalog-table---ny_pub"><strong>2. Create external schema adb305 in Redshift and select from Glue catalog table - ny_pub</strong></a></li>
+        <li><a href="#3-create-internal-schema-workshop_das"><strong>3. Create internal schema workshop_das</strong></a></li>
+        <li><a href="#4-run-ctas-to-create-and-load-redshift-table-workshop_dastaxi_201601-by-selecting-from-external-table"><strong>4. Run CTAS to create and load Redshift table workshop_das.taxi_201601 by selecting from external table</strong></a></li>
+        <li><a href="#5-drop-201601-partitions-from-external-table"><strong>5. Drop 201601 partitions from external table</strong></a></li>
+        <li><a href="#6-create-combined-view-publicadb305_view_ny_taxirides"><strong>6. Create combined view public.adb305_view_NY_TaxiRides</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,23 +475,23 @@
 
 
 
-	<p><strong>6. Query Data Lake - Redshift Spectrum</strong></p>
+	<h3 id="6-query-data-lake---redshift-spectrum"><strong>6. Query Data Lake - Redshift Spectrum</strong></h3>
 <p>In this lab, we show you how to query data in your Amazon S3 data lake with Amazon Redshift without loading or moving data. We will also demonstrate how you can leverage views which union data in Redshift Managed storage with data in S3. You can query structured and semi-structured data from files in Amazon S3 without having to copy or move data into Amazon Redshift tables. For latest guide on the file types that can be queried with Redshift Spectrum, please refer to supported data formats.</p>
 <p><img alt="image.png" src="/images/6/6-001.png"></p>
-<p><strong>Contents</strong></p>
+<h3 id="contents"><strong>Contents</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Use-case description</li>
 <li>Instructions</li>
 <li>Before you leave</li>
 </ul>
-<p><strong>6.1 Before you begin</strong></p>
+<h3 id="61-before-you-begin"><strong>6.1 Before you begin</strong></h3>
 <p>This lab assumes you have launched a Redshift Serverless Warehouse. If you have not created Redshift Serverless warehouse see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Getting Started</a>. We will use the Redshift Query Editor V2 in the Redshift console for this lab.</p>
 <p>Please find your region by following the image below and select s3 data sets as per the instructions for your region.</p>
 <blockquote>
 <p>This lab requires a Redshift Serverless namespace in us-east-1(N. Virginia) or us-west-2(Oregon) or eu-west-1(Ireland) or ap-northeast-1(Tokyo) regions as the data in s3 is located in these four regions.</p>
 </blockquote>
-<p><strong>6.2 Use-Case description</strong></p>
+<h3 id="62-use-case-description"><strong>6.2 Use-Case description</strong></h3>
 <p><strong>Objective</strong>: Derive data insights to showcase the effect of blizzard on number of taxi rides in January 2016.</p>
 <p><strong>Data set description</strong>: NY city taxi trip data including number of taxi rides by year and month for 3 different taxi companies - fhv, green, and yellow.</p>
 <p><strong>Data set S3 location</strong>:</p>
@@ -493,8 +511,8 @@
 </ul>
 <p>Below is an overview of the use case steps involved in this lab.
 <img alt="image.png" src="/images/6/6-2.png"></p>
-<p><strong>6.3 Instructions</strong></p>
-<p><strong>1. Create and run Glue crawler to populate Glue data catalog</strong></p>
+<h3 id="63-instructions"><strong>6.3 Instructions</strong></h3>
+<h3 id="1-create-and-run-glue-crawler-to-populate-glue-data-catalog"><strong>1. Create and run Glue crawler to populate Glue data catalog</strong></h3>
 <p>In this part of the lab, we will perform following activities:</p>
 <ul>
 <li>Query historical data residing on S3 by creating an external DB for Redshift Spectrum.</li>
@@ -563,7 +581,7 @@
 <p><img alt="image.png" src="/images/6/6-14.png"></p>
 <p><strong>+</strong> After Crawler run completes, you can see a new table <strong>ny_pub</strong> in <strong>Glue Catalog</strong></p>
 <p><img alt="image.png" src="/images/6/6-015.png"></p>
-<p><strong>2. Create external schema adb305 in Redshift and select from Glue catalog table - ny_pub</strong></p>
+<h3 id="2-create-external-schema-adb305-in-redshift-and-select-from-glue-catalog-table---ny_pub"><strong>2. Create external schema adb305 in Redshift and select from Glue catalog table - ny_pub</strong></h3>
 <p><strong>+</strong> Go to <strong>Redshift console</strong>.</p>
 <ul>
 <li>
@@ -597,18 +615,20 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">2</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-18.png"></p>
-<p><strong>3. Create internal schema workshop_das</strong></p>
+<h3 id="3-create-internal-schema-workshop_das"><strong>3. Create internal schema workshop_das</strong></h3>
 <p>Create a schema <strong>workshop_das</strong> for tables that will reside on the <strong>Redshift Managed Storage</strong>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">SCHEMA</span> <span style="color:#a6e22e">workshop_das</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-19.png"></p>
-<p><strong>4. Run CTAS to create and load Redshift table workshop_das.taxi_201601 by selecting from external table</strong></p>
+<h3 id="4-run-ctas-to-create-and-load-redshift-table-workshop_dastaxi_201601-by-selecting-from-external-table"><strong>4. Run CTAS to create and load Redshift table workshop_das.taxi_201601 by selecting from external table</strong></h3>
 <p>Create table <strong>workshop_das.taxi_201601</strong> to load data for <strong>green</strong> taxi company for January 2016</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span> <span style="color:#a6e22e">AS</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;green&#39;</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-20.png"></p>
+<blockquote>
 <p><strong>Note</strong>: What about column compression/encoding? Remember that on a CTAS, Amazon Redshift automatically assigns compression encoding as follows:</p>
+</blockquote>
 <ul>
 <li>Columns that are defined as sort keys are assigned RAW compression.</li>
 <li>Columns that are defined as BOOLEAN, REAL, or DOUBLE PRECISION, or GEOMETRY data types are assigned RAW compression.</li>
@@ -626,13 +646,13 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">WHERE</span> <span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2016</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">month</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">AND</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;green&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-22.png"></p>
-<p><strong>5. Drop 201601 partitions from external table</strong></p>
+<h3 id="5-drop-201601-partitions-from-external-table"><strong>5. Drop 201601 partitions from external table</strong></h3>
 <p>Now that we&rsquo;ve loaded all January, 2016 data, we can remove the partitions from the Spectrum table so there is no overlap between the <strong>Redshift Managed Storage (RMS)</strong> table and the <strong>Spectrum</strong> table.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fhv&#39;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;green&#39;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ALTER</span> <span style="color:#a6e22e">TABLE</span> <span style="color:#a6e22e">adb305</span>.<span style="color:#a6e22e">ny_pub</span> <span style="color:#a6e22e">DROP</span> <span style="color:#a6e22e">PARTITION</span>(<span style="color:#a6e22e">year</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2016</span>, <span style="color:#a6e22e">month</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yellow&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/6/6-23.png"></p>
-<p><strong>6. Create combined view public.adb305_view_NY_TaxiRides</strong></p>
+<h3 id="6-create-combined-view-publicadb305_view_ny_taxirides"><strong>6. Create combined view public.adb305_view_NY_TaxiRides</strong></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">CREATE</span> <span style="color:#a6e22e">VIEW</span> <span style="color:#a6e22e">adb305_view_NYTaxiRides</span> <span style="color:#a6e22e">AS</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">workshop_das</span>.<span style="color:#a6e22e">taxi_201601</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UNION</span> <span style="color:#a6e22e">ALL</span>
@@ -846,19 +866,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390282"></script>
+    <script src="/js/jquery.sticky.js?1726390282"></script>
+    <script src="/js/featherlight.min.js?1726390282"></script>
+    <script src="/js/highlight.pack.js?1726390282"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390282"></script>
+    <script src="/js/learn.js?1726390282"></script>
+    <script src="/js/hugo-learn.js?1726390282"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390282" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390282"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

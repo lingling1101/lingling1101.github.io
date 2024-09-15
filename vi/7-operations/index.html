@@ -12,21 +12,21 @@
     <title>Các hoạt động :: LÀM VIỆC VỚI AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390283" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390283" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390283" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390283" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390283" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390283" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390283" rel="stylesheet">
+    <link href="/css/theme.css?1726390283" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390283" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390283" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390283"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390283"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390283"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390283"></script>
 
     
   </div>
@@ -433,7 +433,21 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#7-các-hoạt-động"><strong>7. Các hoạt động</strong></a></li>
+        <li><a href="#nội-dung"><strong>Nội dung</strong></a></li>
+        <li><a href="#71-trước-khi-bắt-đầu"><strong>7.1 Trước khi bắt đầu</strong></a></li>
+        <li><a href="#72-giám-sát"><strong>7.2 Giám sát</strong></a></li>
+        <li><a href="#73-chế-độ-xem-hệ-thống"><strong>7.3 Chế độ xem hệ thống</strong></a></li>
+        <li><a href="#74-ghi-nhật-ký-kiểm-toán"><strong>7.4 Ghi nhật ký kiểm toán</strong></a></li>
+        <li><a href="#75-thay-đổi-rpus-và-đặt-giới-hạn"><strong>7.5 Thay đổi RPUs và đặt giới hạn</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,9 +471,9 @@
 
 
 
-	<p><strong>7. Các hoạt động</strong></p>
+	<h3 id="7-các-hoạt-động"><strong>7. Các hoạt động</strong></h3>
 <p>Trong bài thực hành này, bạn sẽ thực hiện việc giám sát (từ cả bảng điều khiển và các chế độ xem hệ thống), tính năng ghi nhật ký kiểm toán, thay đổi cài đặt và giới hạn RPU cơ bản.</p>
-<p><strong>Nội dung</strong></p>
+<h3 id="nội-dung"><strong>Nội dung</strong></h3>
 <ul>
 <li>Trước khi bắt đầu</li>
 <li>Giám sát</li>
@@ -467,9 +481,9 @@
 <li>Ghi nhật ký kiểm toán</li>
 <li>Thay đổi RPU và đặt giới hạn</li>
 </ul>
-<p><strong>7.1 Trước khi bắt đầu</strong></p>
+<h3 id="71-trước-khi-bắt-đầu"><strong>7.1 Trước khi bắt đầu</strong></h3>
 <p>Bài thực hành này giả định rằng bạn đã khởi tạo một điểm cuối <strong>Amazon Redshift Serverless</strong>. Nếu bạn chưa thực hiện, vui lòng xem phần  <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1">Bắt Đầu</a> và làm theo hướng dẫn ở đó. Chúng tôi sẽ sử dụng <strong>Amazon Redshift <a href="https://console.aws.amazon.com/sqlworkbench/home">QueryEditorV2</a></strong> và bảng điều khiển <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-dashboard"><strong>Amazon Redshift Serverless</strong></a> cho bài thực hành này.</p>
-<p><strong>7.2 Giám sát</strong></p>
+<h3 id="72-giám-sát"><strong>7.2 Giám sát</strong></h3>
 <p>Trong phần này, bạn sẽ trải nghiệm các tùy chọn giám sát khác nhau và thiết lập bộ lọc để trải nghiệm chức năng. Bạn sẽ sử dụng bảng điều khiển để xem lịch sử truy vấn, hiệu suất cơ sở dữ liệu và việc sử dụng tài nguyên.</p>
 <p>Khi bạn đã vào bảng điều khiển <strong>Redshift Serverless</strong>, điều hướng đến phần <a href="https://console.aws.amazon.com/redshiftv2/home?#serverless-query-and-database-monitoring"><strong>Query and database monitoring</strong></a> (Giám sát truy vấn và cơ sở dữ liệu) ở menu bên trái.</p>
 <ul>
@@ -525,7 +539,7 @@
 <li><strong>Compute usage</strong> (Sử dụng tính toán) - Số giây RPU.</li>
 </ul>
 <p><img alt="image.png" src="/images/7/7-010.png"></p>
-<p><strong>7.3 Chế độ xem hệ thống</strong></p>
+<h3 id="73-chế-độ-xem-hệ-thống"><strong>7.3 Chế độ xem hệ thống</strong></h3>
 <p>Dưới đây là các chế độ xem hệ thống trong <strong>Amazon Redshift Serverless</strong> được sử dụng để giám sát truy vấn và sử dụng khối lượng công việc. Các chế độ xem này nằm trong lược đồ <strong>pg_catalog</strong>. Các chế độ xem hệ thống này đã được thiết kế để cung cấp thông tin cần thiết để giám sát Amazon Redshift Serverless, đơn giản hơn nhiều so với các chế độ xem hệ thống khác có sẵn cho các cluster đã cấp phát.</p>
 <ul>
 <li>SYS_QUERY_HISTORY</li>
@@ -579,7 +593,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">sys_load_history</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ORDER</span> <span style="color:#a6e22e">BY</span> <span style="color:#a6e22e">query_id</span> <span style="color:#a6e22e">DESC</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/7/7-13.png"></p>
-<p><strong>7.4 Ghi nhật ký kiểm toán</strong></p>
+<h3 id="74-ghi-nhật-ký-kiểm-toán"><strong>7.4 Ghi nhật ký kiểm toán</strong></h3>
 <p>Bạn có thể cấu hình Amazon Redshift Serverless để xuất dữ liệu kết nối, người dùng và hoạt động của người dùng vào một nhóm nhật ký trong Amazon CloudWatch Logs khi tạo các nhóm công việc.</p>
 <p>Bước đầu tiên trong quy trình là đảm bảo rằng ghi nhật ký kiểm toán đã được bật cho nhóm công việc.</p>
 <ul>
@@ -629,9 +643,11 @@
 <p>Chọn cơ sở dữ liệu <strong>Dev</strong> cho namespace của bạn để tìm tổng số bảng như hình dưới đây.</p>
 <p><img alt="image.png" src="/images/7/7-0024.png"></p>
 <p>Bạn cũng có thể xuất các sự kiện nhóm nhật ký CloudWatch sang S3.</p>
+<blockquote>
 <p><strong>LƯU Ý</strong>: Bạn có thể không truy cập được điều này trong môi trường thực hành. Nhưng bạn có thể thử trong môi trường của riêng bạn.</p>
+</blockquote>
 <p><img alt="image.png" src="/images/7/7-025.png"></p>
-<p><strong>7.5 Thay đổi RPUs và đặt giới hạn</strong></p>
+<h3 id="75-thay-đổi-rpus-và-đặt-giới-hạn"><strong>7.5 Thay đổi RPUs và đặt giới hạn</strong></h3>
 <ul>
 <li>Chọn default workgroup của bạn, nhấp vào tab <strong>Limits</strong> (Giới hạn).</li>
 <li>Nhấp vào <strong>Edit</strong> (Chỉnh sửa) trong phần <strong>Base capacity in Redshift processing units (RPUs)</strong> (Công suất cơ bản bằng đơn vị xử lý Redshift - RPU).</li>
@@ -870,19 +886,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390283"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390283"></script>
+    <script src="/js/jquery.sticky.js?1726390283"></script>
+    <script src="/js/featherlight.min.js?1726390283"></script>
+    <script src="/js/highlight.pack.js?1726390283"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390283"></script>
+    <script src="/js/learn.js?1726390283"></script>
+    <script src="/js/hugo-learn.js?1726390283"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390283" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390283"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

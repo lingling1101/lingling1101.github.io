@@ -12,21 +12,21 @@
     <title>Machine Learning - Redshift ML :: WORK WITH AMAZON SYSTEM MANAGER - SESSION MANAGER</title>
 
     
-    <link href="/css/nucleus.css?1725805070" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725805070" rel="stylesheet">
-    <link href="/css/hybrid.css?1725805070" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725805070" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725805070" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725805070" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725805070" rel="stylesheet">
-    <link href="/css/theme.css?1725805070" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725805070" rel="stylesheet">
+    <link href="/css/nucleus.css?1726390282" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1726390282" rel="stylesheet">
+    <link href="/css/hybrid.css?1726390282" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1726390282" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1726390282" rel="stylesheet">
+    <link href="/css/auto-complete.css?1726390282" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1726390282" rel="stylesheet">
+    <link href="/css/theme.css?1726390282" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1726390282" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725805070" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1726390282" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725805070"></script>
+    <script src="/js/jquery-3.3.1.min.js?1726390282"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725805070"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725805070"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1726390282"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1726390282"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/lingling1101.github.io\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725805070"></script>
+<script type="text/javascript" src="/js/search.js?1726390282"></script>
 
     
   </div>
@@ -433,7 +433,21 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#5-machine-learning---redshift-ml"><strong>5. Machine Learning - Redshift ML</strong></a></li>
+        <li><a href="#contents"><strong>Contents</strong></a></li>
+        <li><a href="#51-before-you-begin"><strong>5.1 Before you begin</strong></a></li>
+        <li><a href="#52-data-preparation"><strong>5.2 Data preparation</strong></a></li>
+        <li><a href="#53-create-model"><strong>5.3 Create model</strong></a></li>
+        <li><a href="#54-check-accuracy-and-run-inference-query"><strong>5.4 Check accuracy and run inference query</strong></a></li>
+        <li><a href="#55-explainability"><strong>5.5 Explainability</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -457,9 +471,9 @@
 
 
 
-	<p><strong>5. Machine Learning - Redshift ML</strong></p>
+	<h3 id="5-machine-learning---redshift-ml"><strong>5. Machine Learning - Redshift ML</strong></h3>
 <p>In this lab you will create a model using Redshift ML Auto.</p>
-<p><strong>Contents</strong></p>
+<h3 id="contents"><strong>Contents</strong></h3>
 <ul>
 <li>Before you begin</li>
 <li>Data preparation</li>
@@ -468,9 +482,9 @@
 <li>Explainability</li>
 <li>Before you leave</li>
 </ul>
-<p><strong>5.1 Before you begin</strong></p>
+<h3 id="51-before-you-begin"><strong>5.1 Before you begin</strong></h3>
 <p>This lab assumes that you have launched an Amazon Redshift Serverless endpoint. If you have not already done so, please see <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1"><strong>Getting Started</strong></a> and follow the instructions there. We will use <a href="https://console.aws.amazon.com/sqlworkbench/home">Amazon Redshift QueryEditorV2</a>  for this lab.</p>
-<p><strong>5.2 Data preparation</strong></p>
+<h3 id="52-data-preparation"><strong>5.2 Data preparation</strong></h3>
 <p>The Bank Marketing data set contains direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to assess (evaluate) if the product (bank term deposit) would be (&lsquo;yes&rsquo;) or not (&rsquo;no&rsquo;) subscribed.</p>
 <p>The data set consists of the following attributes. The classification goal is to predict if the client will subscribe to a term deposit.</p>
 <p><strong>Attributes for bank client data:</strong></p>
@@ -553,7 +567,7 @@
 <p>Before you create a model, you need to create a S3 bucket for storing intermediate results. Navigate to S3 and create a testanalytics bucket suffixed with your name, a random number, or you account number to give a unique name. You can find your account number on top right hand corner of management console. The intention is to create a S3 bucket with unique name.</p>
 <p><img alt="image.png" src="/images/5/5-3.png"></p>
 <p><img alt="image.png" src="/images/5/5-04.png"></p>
-<p><strong>5.3 Create model</strong></p>
+<h3 id="53-create-model"><strong>5.3 Create model</strong></h3>
 <p>Complete Autopilot generated with minimal user inputs. This will be a binary classification problem but auto pilot will choose the relevant algorithm based on the data and inputs</p>
 <p>Execute the following statement to create the model. Replace <code>&lt;&lt;S3 bucket&gt;&gt;</code> with the bucket name you created above.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>
@@ -600,7 +614,7 @@
 <blockquote>
 <p>As the training takes ~60minutes, you can move to next lab or a presentation. Please come back after an hour and execute rest of the steps.</p>
 </blockquote>
-<p><strong>5.4 Check accuracy and run inference query</strong></p>
+<h3 id="54-check-accuracy-and-run-inference-query"><strong>5.4 Check accuracy and run inference query</strong></h3>
 <p>Hope you gave enough time (~60min) for model to complete training. Run the same SQL Query as above to check status of the model. The model state should be in &lsquo;Ready&rsquo; for you to proceed. Pay attention to the validation:f1 score - it will be between 0 and 1, the closer to 1, the better the model.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">model</span> <span style="color:#a6e22e">model_bank_marketing</span>;
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-07.png"></p>
@@ -632,7 +646,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">from</span> <span style="color:#a6e22e">term_data</span> <span style="color:#a6e22e">GROUP</span> <span style="color:#a6e22e">BY</span> <span style="color:#ae81ff">1</span>;.
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-8.png"></p>
 <p><img alt="image.png" src="/images/5/5-9.png"></p>
-<p><strong>5.5 Explainability</strong></p>
+<h3 id="55-explainability"><strong>5.5 Explainability</strong></h3>
 <p>You can identify which attributes are positively contributing to the prediction and how much is the contribution score by generating model explainability report. Please run below command to see model explainability.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">SELECT</span> <span style="color:#a6e22e">explain_model</span>(<span style="color:#e6db74">&#39;model_bank_marketing&#39;</span>);
 </span></span></code></pre></div><p><img alt="image.png" src="/images/5/5-010.png"></p>
@@ -829,19 +843,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725805070"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725805070"></script>
-    <script src="/js/jquery.sticky.js?1725805070"></script>
-    <script src="/js/featherlight.min.js?1725805070"></script>
-    <script src="/js/highlight.pack.js?1725805070"></script>
+    <script src="/js/clipboard.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.min.js?1726390282"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1726390282"></script>
+    <script src="/js/jquery.sticky.js?1726390282"></script>
+    <script src="/js/featherlight.min.js?1726390282"></script>
+    <script src="/js/highlight.pack.js?1726390282"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725805070"></script>
-    <script src="/js/learn.js?1725805070"></script>
-    <script src="/js/hugo-learn.js?1725805070"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1726390282"></script>
+    <script src="/js/learn.js?1726390282"></script>
+    <script src="/js/hugo-learn.js?1726390282"></script>
 
-    <link href="/mermaid/mermaid.css?1725805070" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725805070"></script>
+    <link href="/mermaid/mermaid.css?1726390282" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1726390282"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
